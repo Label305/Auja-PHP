@@ -1,0 +1,15 @@
+suites:
+  auja: Label305\Auja
+
+formatter.name: pretty
+
+code_coverage:
+  format:
+    - clover
+    - html
+  output:
+    clover: coverage.xml
+    html: coverage
+
+extensions:
+  - PhpSpec\Extension\CodeCoverageExtension

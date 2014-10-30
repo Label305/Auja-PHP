@@ -26,13 +26,13 @@ namespace spec\Label305\Auja\Menu;
 set_include_path(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . PATH_SEPARATOR . get_include_path());
 require_once('BaseSpec.php'); // TODO: can this be prettier?
 
-use Label305\Auja\Menu\LinkMenuItem;
+use Label305\Auja\Menu\MenuItem;
+use Label305\Auja\Menu\ResourceMenuItem;
 use spec\Label305\Auja\BaseSpec;
 
 class ResourceSpec extends BaseSpec {
 
     function it_is_initializable() {
-        /* We need a not abstract implementation to test */
         $this->shouldHaveType('Label305\Auja\Menu\Resource');
     }
 
@@ -40,7 +40,7 @@ class ResourceSpec extends BaseSpec {
         $this->getType()->shouldBe('items');
     }
 
-    function it_has_a_collection_of_LinkMenuItems(LinkMenuItem $linkMenuItem1, LinkMenuItem $linkMenuItem2) {
+    function it_has_a_collection_of_MenuItems(MenuItem $linkMenuItem1, MenuItem $linkMenuItem2) {
         $this->addItem($linkMenuItem1);
         $this->addItem($linkMenuItem2);
 
@@ -49,12 +49,16 @@ class ResourceSpec extends BaseSpec {
         $this->getItems()->shouldContain($linkMenuItem2);
     }
 
+    function it_does_not_accept_a_ResourceMenuItem(ResourceMenuItem $resourceMenuItem){
+        $this->shouldThrow('\InvalidArgumentException')->during('addItem', [$resourceMenuItem]);
+    }
+
     function it_has_a_next_page_url() {
         $this->setNextPageUrl('url');
         $this->getNextPageUrl()->shouldBe('url');
     }
 
-    function it_can_return_jsonserializable_data(LinkMenuItem $linkMenuItem) {
+    function it_can_return_jsonserializable_data(MenuItem $linkMenuItem) {
         $this->addItem($linkMenuItem);
 
         $linkMenuItem->jsonSerialize()->shouldBeCalled();

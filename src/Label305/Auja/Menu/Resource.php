@@ -38,7 +38,7 @@ class Resource extends AujaItem {
     const TYPE = 'items';
 
     /**
-     * @var LinkMenuItem[] The `LinkMenuItem`s which contain the database entries.
+     * @var MenuItem[] The `MenuItem`s which contain the database entries.
      */
     private $items = [];
 
@@ -52,11 +52,15 @@ class Resource extends AujaItem {
     }
 
     /**
-     * Adds a `LinkMenuItem`, which contains a database entry.
+     * Adds a `MenuItem`, which contains a database entry.
      *
-     * @param LinkMenuItem $item The item to add.
+     * @param MenuItem $item The item to add. Must not be a `ResourceMenuItem`.
      */
-    public function addItem(LinkMenuItem $item) {
+    public function addItem(MenuItem $item) {
+        if($item instanceof ResourceMenuItem){
+            throw new \InvalidArgumentException('ResourceMenuItem passed to Resource::addItem(MenuItem). You cannot nest ResourceMenuItems.');
+        }
+
         $this->items[] = $item;
     }
 

@@ -91,8 +91,7 @@ class ResourceMenuItem extends MenuItem {
         $result['properties'] = [];
         foreach ($this->properties as $property){
             $data = $property->jsonSerialize();
-            $key = array_keys($data)[0];
-            $result['properties'][$key] = $data[$key];
+            $result['properties'][key($data)] = $data[key($data)];
         }
 
         return $result;

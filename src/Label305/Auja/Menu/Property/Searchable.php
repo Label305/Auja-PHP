@@ -70,6 +70,14 @@ class Searchable extends Property {
         return $this->target;
     }
 
+    public function getProperties(){
+        $result = [];
+
+        $result['target'] = $this->target;
+
+        return $result;
+    }
+
     public function getType() {
         return self::TYPE;
     }

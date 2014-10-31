@@ -41,7 +41,14 @@ abstract class Property extends AujaItem {
      */
     public function jsonSerialize() {
         $result = [];
-        $result[$this->getType()] = [];
+        $result[$this->getType()] = $this->getProperties();
         return $result;
+    }
+
+    /**
+     * @return array An array of key value pairs with the specific properties of the Property.
+     */
+    function getProperties() {
+        return [];
     }
 }

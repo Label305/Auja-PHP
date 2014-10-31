@@ -26,6 +26,7 @@ namespace spec\Label305\Auja\Menu;
 set_include_path(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.PATH_SEPARATOR.get_include_path());
 require_once('BaseSpec.php'); // TODO: can this be prettier?
 
+use Label305\Auja\Menu\Property\Property;
 use spec\Label305\Auja\BaseSpec;
 
 class ResourceMenuItemSpec extends BaseSpec {
@@ -45,13 +46,13 @@ class ResourceMenuItemSpec extends BaseSpec {
         $this->getTarget()->shouldBe('url');
     }
 
-    function it_has_properties(){
-        $this->addProperty('a');
-        $this->addProperty('b');
+    function it_has_properties(Property $property1, Property $property2){
+        $this->addProperty($property1);
+        $this->addProperty($property2);
 
         $this->getProperties()->shouldBeArray();
-        $this->getProperties()->shouldContain('a');
-        $this->getProperties()->shouldContain('b');
+        $this->getProperties()->shouldContain($property1);
+        $this->getProperties()->shouldContain($property2);
     }
 
     function it_has_type_properties() {
@@ -61,4 +62,29 @@ class ResourceMenuItemSpec extends BaseSpec {
         ));
     }
 
+    function it_can_return_json_serializable_data() {
+        $property = new DummyProperty('target');
+        $this->addProperty($property);
+
+        $this->jsonSerialize()->shouldHaveKey('resource');
+
+        $data = $this->jsonSerialize()->getWrappedObject();
+        if(!is_array($data['resource']['properties'])) {
+            throw new \Exception('properties value is no array');
+        }
+
+        if(!isset($data['resource']['properties']['dummy'])) {
+            throw new \Exception('Properties array not correctly filled');
+        }
+    }
+}
+
+class DummyProperty extends Property {
+
+    /**
+     * @return String The type of the `AujaItem`.
+     */
+    public function getType() {
+        return 'dummy';
+    }
 }

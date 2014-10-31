@@ -22,6 +22,7 @@
  */
 
 namespace Label305\Auja\Menu;
+use Label305\Auja\Menu\Property\Property;
 
 /**
  * A placeholder `MenuItem` which typically will hold database entries.
@@ -29,7 +30,7 @@ namespace Label305\Auja\Menu;
  * When provided to Auja, a call is typically made to the `target` url
  * to fetch database entries, which will be placed inside the `ResourceMenuItem`.
  *
- * Behavior properties can be added to instances of this class, such as `Searchable`. // TODO: PROPERTIES
+ * Behavior properties can be added to instances of this class, such as `Searchable`.
  *
  * @author  Niek Haarman - <niek@label305.com>
  *
@@ -46,7 +47,7 @@ class ResourceMenuItem extends MenuItem {
     private $target;
 
     /**
-     * @var String[] The properties this resource has.
+     * @var Property[] The properties this resource has.
      */
     private $properties = array();
 
@@ -69,14 +70,14 @@ class ResourceMenuItem extends MenuItem {
     }
 
     /**
-     * @param String $property The property to add. // TODO: Which properties?
+     * @param Property $property The property to add.
      */
-    public function addProperty($property) {
+    public function addProperty(Property $property) {
         $this->properties[] = $property;
     }
 
     /**
-     * @return String[] The properties this `ResourceMenuItem` has.
+     * @return Property[] The properties this `ResourceMenuItem` has.
      */
     public function getProperties() {
         return $this->properties;
@@ -86,7 +87,12 @@ class ResourceMenuItem extends MenuItem {
         $result = array();
 
         $result['target'] = $this->target;
-        $result['properties'] = $this->properties;
+
+        $result['properties'] = [];
+        foreach ($this->properties as $property){
+            $data = $property->jsonSerialize();
+            $result['properties'][key($data)] = $data[key($data)];
+        }
 
         return $result;
     }

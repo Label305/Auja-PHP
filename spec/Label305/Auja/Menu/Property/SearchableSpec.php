@@ -49,4 +49,9 @@ class SearchableSpec extends BaseSpec {
     function it_throws_an_exception_upon_invalid_target() {
         $this->shouldThrow('InvalidArgumentException')->during('setTarget', ['invalid']);
     }
+
+    function it_accepts_a_valid_target() {
+        $this->setTarget(self::TARGET);
+        $this->getTarget()->shouldBe(self::TARGET);
+    }
 }

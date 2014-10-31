@@ -31,11 +31,8 @@ use spec\Label305\Auja\BaseSpec;
 
 class PropertySpec extends BaseSpec {
 
-    const TARGET = 'target';
-
     function let() {
         $this->beAnInstanceOf('spec\Label305\Auja\Menu\Property\DummyProperty');
-        $this->beConstructedWith(self::TARGET);
     }
 
     function it_is_initializable() {
@@ -43,21 +40,10 @@ class PropertySpec extends BaseSpec {
         $this->shouldHaveType('Label305\Auja\Menu\Property\Property');
     }
 
-    function it_has_a_target() {
-        $this->getTarget()->shouldBe(self::TARGET);
-        $this->setTarget('New target');
-        $this->getTarget()->shouldBe('New target');
-    }
-
     function it_can_return_json_serializable_data() {
         $this->jsonSerialize()->shouldBeArray();
         $this->jsonSerialize()->shouldHaveCount(1);
         $this->jsonSerialize()->shouldHaveKey('dummy');
-
-        $result = $this->jsonSerialize()->getWrappedObject();
-        if($result['dummy']['target'] != self::TARGET){
-            throw new \Exception('Wrong target');
-        }
     }
 }
 

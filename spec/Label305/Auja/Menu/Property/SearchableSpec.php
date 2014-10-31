@@ -51,6 +51,7 @@ class SearchableSpec extends BaseSpec {
     }
 
     function it_accepts_a_valid_target() {
+        $this->getTarget()->shouldBe(self::TARGET);
         $this->setTarget(self::TARGET);
         $this->getTarget()->shouldBe(self::TARGET);
     }

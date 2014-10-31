@@ -36,6 +36,11 @@ class Searchable extends Property {
     const TYPE = 'searchable';
 
     /**
+     * @var String The target url.
+     */
+    private $target;
+
+    /**
      * Creates a new searchable property with given target.
      *
      * @param String $target The target url. It should contain '%s' where the search query should go.
@@ -43,8 +48,7 @@ class Searchable extends Property {
      * @throws \InvalidArgumentException if the target is invalid.
      */
     function __construct($target) {
-        $this->verifyTarget($target);
-        parent::__construct($target);
+        $this->setTarget($target);
     }
 
     /**
@@ -53,24 +57,20 @@ class Searchable extends Property {
      * @throws \InvalidArgumentException if the target is invalid.
      */
     public function setTarget($target) {
-        $this->verifyTarget($target);
-        parent::setTarget($target);
+        if (strpos($target, '%s') === false) {
+            throw new \InvalidArgumentException('Searchable target url should contain \'%s\'.');
+        }
+        $this->target = $target;
+    }
+
+    /**
+     * @return String The target url.
+     */
+    public function getTarget() {
+        return $this->target;
     }
 
     public function getType() {
         return self::TYPE;
-    }
-
-    /**
-     * Verifies whether given target url contains '%s'.
-     *
-     * @param String $target The target url which should contain '%s'.
-     *
-     * @throws \InvalidArgumentException if the target is invalid.
-     */
-    private function verifyTarget($target) {
-        if (strpos($target, '%s') === false) {
-            throw new \InvalidArgumentException('Searchable target url should contain \'%s\'.');
-        }
     }
 }

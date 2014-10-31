@@ -37,43 +37,11 @@ use Label305\Auja\AujaItem;
 abstract class Property extends AujaItem {
 
     /**
-     * @var String The target url.
-     */
-    private $target;
-
-    /**
-     * Creates a new Property with target url.
-     *
-     * @param String $target The target url.
-     */
-    function __construct($target) {
-        $this->target = $target;
-    }
-
-    /**
-     * @return String The target url.
-     */
-    public function getTarget() {
-        return $this->target;
-    }
-
-    /**
-     * @param String $target The target url.
-     */
-    public function setTarget($target) {
-        $this->target = $target;
-    }
-
-    /**
      * @return array An `array` of key-value pairs of properties of this `AujaItem`.
      */
     public function jsonSerialize() {
         $result = [];
-
-        $result[$this->getType()] = [
-            'target' => $this->target
-        ];
-
+        $result[$this->getType()] = [];
         return $result;
     }
 }

@@ -99,6 +99,7 @@ class MainSpec extends BaseSpec {
         $this->addButton($button);
         $this->setAuthenticationForm($form);
         $this->addItem($item);
+        $this->setAuthenticated(true);
 
         $this->jsonSerialize()->shouldHaveKeys(array(
             'title',
@@ -113,11 +114,27 @@ class MainSpec extends BaseSpec {
     }
 
     function it_can_return_json_serializable_data_without_an_authentication_form() {
+        $this->setAuthenticated(true);
         $this->jsonSerialize()->shouldHaveKeys(array(
             'title',
             'authenticated',
             'debug',
             'colors',
+            'user',
+            'buttons',
+            'menu'
+        ));
+    }
+
+    function it_only_returns_non_sensitive_data_when_not_authenticated() {
+        $this->jsonSerialize()->shouldHaveKeys(array(
+            'title',
+            'authenticated',
+            'debug',
+            'colors',
+        ));
+
+        $this->jsonSerialize()->shouldNotHaveKeys(array(
             'user',
             'buttons',
             'menu'

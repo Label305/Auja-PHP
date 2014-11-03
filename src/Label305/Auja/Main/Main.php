@@ -46,6 +46,11 @@ class Main extends AujaItem {
     const COLOR_ALERT = "alert";
 
     /**
+     * @var String[] The keys that are allowed to be visible to the public.
+     */
+    private $public = ['title', 'authenticated', 'debug', 'colors', 'authentication'];
+
+    /**
      * @var String The title.
      */
     private $title;
@@ -217,12 +222,11 @@ class Main extends AujaItem {
         $result['user'] = array('name' => $this->getUsername());
 
         $result['buttons'] = array();
-        foreach($this->getButtons() as $button){
+        foreach ($this->getButtons() as $button) {
             $result['buttons'][] = $button->jsonSerialize();
         }
 
         $result['menu'] = array();
-
         foreach ($this->getItems() as $item) {
             $result['menu'][] = $item->jsonSerialize();
         }
@@ -231,6 +235,10 @@ class Main extends AujaItem {
             $result['authentication'] = $this->getAuthenticationForm()->aujaSerialize();
         }
 
-        return $result;
+        if (!$this->isAuthenticated()) {
+            return array_intersect_key($result, array_flip($this->public));
+        } else {
+            return $result;
+        }
     }
 }

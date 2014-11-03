@@ -44,6 +44,16 @@ class BaseSpec extends ObjectBehavior {
                 return true;
             },
 
+            'notHaveKeys' => function ($array, $keys) {
+                foreach ($keys as $key) {
+                    if (array_key_exists($key, $array)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            },
+
             'haveKeyValuePair' => function ($array, $key, $value) {
                 return array_key_exists($key, $array) && $array[$key] == $value;
             },

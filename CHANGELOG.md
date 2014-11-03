@@ -1,5 +1,10 @@
 # Change Log
 
+Version 3.0.0-alpha4 *(2014-11-03)*
+-----------------------------------
+
+ * Restricted Main keys to `['title', 'authenticated', 'debug', 'colors', 'authentication']` when not authenticated.
+
 Version 3.0.0-alpha3 *(2014-10-31)*
 -----------------------------------
 

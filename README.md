@@ -21,7 +21,7 @@ Auja's basis is the [Auja JavaScript repository](https://github.com/Label305/Auj
 Auja-PHP is available on [Packagist](https://packagist.org/packages/label305/auja).
 Add Auja-PHP to your dependencies by running
 
-    composer require label305/auja:v3.0.0-alpha3
+    composer require label305/auja:v3.0.0-alpha4
 
 ## Usage
 

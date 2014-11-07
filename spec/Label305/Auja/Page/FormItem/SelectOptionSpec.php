@@ -29,38 +29,39 @@ require_once('BaseSpec.php'); // TODO: can this be prettier?
 use Label305\Auja\Page\FormItem\SelectOption;
 use spec\Label305\Auja\BaseSpec;
 
-class SelectFormItemSpec extends BaseSpec {
+class SelectOptionSpec extends BaseSpec {
+
+    const LABEL = 'label';
+
+    const VALUE = 'value';
+
+    function let() {
+        $this->beConstructedWith(self::LABEL, self::VALUE);
+    }
 
     function it_is_initializable() {
-        $this->shouldHaveType('Label305\Auja\Page\FormItem\SelectFormItem');
+        $this->shouldHaveType('Label305\Auja\Page\FormItem\SelectOption');
     }
 
-    function it_has_type_select() {
-        $this->getType()->shouldBe('select');
+    function it_has_no_type() {
+        $this->getType()->shouldBeNull();
     }
 
-    function it_has_options(SelectOption $option1, SelectOption $option2) {
-        $this->getOptions()->shouldBeArray();
-        $this->addOption($option1);
-        $this->addOption($option2);
-        $this->getOptions()->shouldContain($option1);
-        $this->getOptions()->shouldContain($option2);
+    function it_has_a_label() {
+        $this->getLabel()->shouldBe(self::LABEL);
+        $this->setLabel('new label');
+        $this->getLabel()->shouldBe('new label');
     }
 
-    function it_can_mass_assign_options(SelectOption $option1, SelectOption $option2) {
-        $this->setOptions([$option1, $option2]);
-        $this->getOptions()->shouldContain($option1);
-        $this->getOptions()->shouldContain($option2);
+    function it_has_a_value() {
+        $this->getValue()->shouldBe(self::VALUE);
+        $this->setValue('new value');
+        $this->getValue()->shouldBe('new value');
     }
 
-    function it_returns_options_in_jsonserializable_data(SelectOption $option1, SelectOption $option2) {
-        $this->setOptions([$option1, $option2]);
-
-        $result = $this->jsonSerialize();
-        $data = $result->getWrappedObject();
-
-        if (!sizeof($data['options'], 2)) {
-            throw new Exception('options does not have expected size 2. Actual: ' . sizeof($data['options']));
-        }
+    function it_can_return_jsonserializable_data() {
+        $this->jsonSerialize()->shouldContain('label');
+        $this->jsonSerialize()->shouldContain('value');
     }
+
 }

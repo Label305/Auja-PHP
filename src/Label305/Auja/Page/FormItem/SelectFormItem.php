@@ -24,7 +24,7 @@
 namespace Label305\Auja\Page\FormItem;
 
 /**
- * Represents an select field with options in a form in Auja.
+ * Represents a select field with options in a form in Auja.
  *
  * @author  Niek Haarman - <niek@label305.com>
  *
@@ -36,7 +36,7 @@ class SelectFormItem extends FormItem {
     const TYPE = 'select';
 
     /**
-     * @var array The options.
+     * @var SelectOption[] The options.
      */
     private $options = [];
 
@@ -45,23 +45,34 @@ class SelectFormItem extends FormItem {
     }
 
     /**
-     * @return array The options.
+     * @return SelectOption[] The options.
      */
     public function getOptions() {
         return $this->options;
     }
 
     /**
-     * @param array $options The options.
+     * @param SelectOption[] $options The options.
      */
     public function setOptions($options) {
         $this->options = $options;
     }
 
     /**
-     * @param mixed $option The option to add.
+     * @param SelectOption $option The option to add.
      */
-    public function addOption($option) {
+    public function addOption(SelectOption $option) {
         $this->options[] = $option;
+    }
+
+    public function jsonSerialize() {
+        $result = parent::jsonSerialize();
+
+        $result['options'] = [];
+        foreach ($this->options as $option) {
+            $result['options'][] = $option->jsonSerialize();
+        }
+
+        return $result;
     }
 }

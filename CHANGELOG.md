@@ -1,5 +1,10 @@
 # Change Log
 
+Version 3.0.0-alpha5 *(2104-11-07)*
+-----------------------------------
+
+ * Updated `SelectFormItem` to only accept `SelectOption` instances.
+
 Version 3.0.0-alpha4 *(2014-11-03)*
 -----------------------------------
 

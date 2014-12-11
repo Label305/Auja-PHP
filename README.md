@@ -3,6 +3,7 @@ Auja PHP Development Kit
 
 [![Build Status](https://travis-ci.org/Label305/Auja-PHP.svg?branch=master)](https://travis-ci.org/Label305/Auja-PHP)
 [![Coverage Status](https://coveralls.io/repos/Label305/Auja-PHP/badge.png?branch=master)](https://coveralls.io/r/Label305/Auja-PHP?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/54899173746eb519300002eb/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54899173746eb519300002eb)
 [![Latest Stable Version](https://poser.pugx.org/label305/auja/v/stable.svg)](https://packagist.org/packages/label305/auja)
 [![Total Downloads](https://poser.pugx.org/label305/auja/downloads.svg)](https://packagist.org/packages/label305/auja)
 [![Latest Unstable Version](https://poser.pugx.org/label305/auja/v/unstable.svg)](https://packagist.org/packages/label305/auja)

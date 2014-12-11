@@ -14,8 +14,8 @@ The [Auja javascript frontend](https://github.com/Label305/Auja) provides the gr
 Related repositories
 -----------
   
-  - [**Auja**](https://github.com/Label305/Auja) - The frontend JavaScript GUI.
-  - [**Auja for Laravel**](https://github.com/Label305/Auja-Laravel) - An implementation of Auja for the Laravel framework.
+  - [**Auja**](https://github.com/Label305/Auja) - The frontend JavaScript GUI
+  - [**Auja for Laravel**](https://github.com/Label305/Auja-Laravel) - An implementation of Auja for the Laravel framework
 
 ## Setup
 

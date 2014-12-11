@@ -1,4 +1,5 @@
-# Auja-PHP
+Auja PHP Development Kit
+==============
 
 [![Build Status](https://travis-ci.org/Label305/Auja-PHP.svg?branch=master)](https://travis-ci.org/Label305/Auja-PHP)
 [![Coverage Status](https://coveralls.io/repos/Label305/Auja-PHP/badge.png?branch=master)](https://coveralls.io/r/Label305/Auja-PHP?branch=master)
@@ -6,15 +7,15 @@
 [![Total Downloads](https://poser.pugx.org/label305/auja/downloads.svg)](https://packagist.org/packages/label305/auja)
 [![Latest Unstable Version](https://poser.pugx.org/label305/auja/v/unstable.svg)](https://packagist.org/packages/label305/auja)
 
-[Auja](http://label305.github.io/Auja/) is an easy-to-use and easy-to-implement back-end interface. It provides an easy and intuitive way for you to view and manipulate your data, so you can focus on more important matters. Auja is designed to be both user-friendly _and_ developer-friendly by providing you with tools to setup your back-end in no more than five minutes.
+Auja is an easy-to-use, easy-to-implement admin interface. It provides an easy and intuitive way for you to view and manipulate your data, so you can focus on more important matters. Auja is designed to be both user-friendly _and_ developer-friendly by providing you with tools to setup your admin interface in a couple of minutes.
 
-Auja's basis is the [Auja JavaScript repository](https://github.com/Label305/Auja), which provides the graphical user interface. To determine its content, it relies on specific JSON messages. In this repository, you can find the PHP objects which can provide these JSON messages for you.
+The [Auja javascript frontend](https://github.com/Label305/Auja) provides the graphical user interface. To determine its content, it relies on a JSON web-service you implement. This repository in turn, provides an Object Oriented approach to provide these JSON messages from a PHP application.
 
-## Related repositories
+Related repositories
+-----------
   
-  - [**Auja**](https://github.com/Label305/Auja) - The JavaScript GUI implementation.
-  - [**Auja-Laravel**](https://github.com/Label305/Auja-Laravel) - An implementation of Auja for the Laravel framework.
-  - [**Auja-Laravel-Example**](https://github.com/Label305/Auja-Laravel-Example) - An example Laravel project using Auja.
+  - [**Auja**](https://github.com/Label305/Auja) - The frontend JavaScript GUI.
+  - [**Auja for Laravel**](https://github.com/Label305/Auja-Laravel) - An implementation of Auja for the Laravel framework.
 
 ## Setup
 

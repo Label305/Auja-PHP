@@ -1,7 +1,7 @@
 {
     "name": "label305/auja",
     "type": "library",
-    "description": "An API wrapper for communicating with the Auja javascript frontend. Auja is an easy-to-use, easy-to-implement admin interface for managing your data.",
+    "description": "A web service development kit for communicating with the Auja javascript frontend. Auja is an easy-to-use, easy-to-implement admin interface for managing your data.",
     "keywords": ["Auja", "PHP", "Admin"],
     "homepage": "http://label305.github.io/Auja",
     "license": "Apache-2.0",

@@ -63,7 +63,7 @@ class FormSpec extends BaseSpec {
         $this->getFormItems()->shouldContain($formItem2);
     }
 
-    function it_can_return_json_serializable_data(FormItem $formItem){
+    function it_can_return_basic_serializable_data(FormItem $formItem){
         $this->addFormItem($formItem);
 
         $this->basicSerialize()->shouldHaveCount(3);

@@ -53,7 +53,7 @@ class ItemSpec extends BaseSpec {
         $this->getTarget()->shouldBe('Target');
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $this->basicSerialize()->shouldHaveKeys(array(
             'title',
             'icon',

@@ -95,7 +95,7 @@ class MainSpec extends BaseSpec {
         $this->getAuthenticationForm()->shouldBe($form);
     }
 
-    function it_can_return_json_serializable_data(Button $button, Form $form, Item $item) {
+    function it_can_return_basic_serializable_data(Button $button, Form $form, Item $item) {
         $this->addButton($button);
         $this->setAuthenticationForm($form);
         $this->addItem($item);
@@ -113,7 +113,7 @@ class MainSpec extends BaseSpec {
         ));
     }
 
-    function it_can_return_json_serializable_data_without_an_authentication_form() {
+    function it_can_return_basic_serializable_data_without_an_authentication_form() {
         $this->setAuthenticated(true);
         $this->basicSerialize()->shouldHaveKeys(array(
             'title',

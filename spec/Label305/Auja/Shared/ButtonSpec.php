@@ -38,7 +38,7 @@ class ButtonSpec extends BaseSpec {
         $this->getMethod()->shouldBe('Method');
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $this->setConfirmationMessage('Confirmation');
 
         $this->basicSerialize()->shouldHaveKeys(array(
@@ -49,7 +49,7 @@ class ButtonSpec extends BaseSpec {
         ));
     }
 
-    function it_can_return_json_serializable_data_without_confirmation_message() {
+    function it_can_return_basic_serializable_data_without_confirmation_message() {
         $this->basicSerialize()->shouldHaveCount(3);
         $this->basicSerialize()->shouldHaveKeys(array(
             'text',

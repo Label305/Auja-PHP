@@ -67,7 +67,7 @@ class FormItemSpec extends BaseSpec {
         $this->isRequired()->shouldBe(false);
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $this->beAnInstanceOf('Label305\Auja\Page\FormItem\TextFormItem');
 
         $this->setLabel('Label');

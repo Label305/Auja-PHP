@@ -58,7 +58,7 @@ class ResourceSpec extends BaseSpec {
         $this->getNextPageUrl()->shouldBe('url');
     }
 
-    function it_can_return_jsonserializable_data(MenuItem $linkMenuItem) {
+    function it_can_return_basic_serializable_data(MenuItem $linkMenuItem) {
         $this->addItem($linkMenuItem);
 
         $linkMenuItem->basicSerialize()->shouldBeCalled();

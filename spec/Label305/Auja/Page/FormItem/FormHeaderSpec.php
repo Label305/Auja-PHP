@@ -44,7 +44,7 @@ class FormHeaderSpec extends BaseSpec  {
         $this->getText()->shouldBe('Text');
     }
 
-    function it_can_return_json_serializable_data(){
+    function it_can_return_basic_serializable_data(){
         $this->setText('Text');
 
         $this->basicSerialize()->shouldHaveCount(1);

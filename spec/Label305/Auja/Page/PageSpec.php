@@ -67,7 +67,7 @@ class PageSpec extends BaseSpec {
         $this->shouldThrow('\InvalidArgumentException')->duringAddPageComponent($pageComponent, 'Hello');
     }
 
-    function it_can_return_json_serializable_data(PageComponent $pageComponent1, PageComponent $pageComponent2) {
+    function it_can_return_basic_serializable_data(PageComponent $pageComponent1, PageComponent $pageComponent2) {
         $this->addPageComponent($pageComponent1);
         $this->addPageComponent($pageComponent2);
 

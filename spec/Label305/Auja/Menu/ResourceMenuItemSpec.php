@@ -62,7 +62,7 @@ class ResourceMenuItemSpec extends BaseSpec {
         ));
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $property = new DummyProperty('target');
         $this->addProperty($property);
 

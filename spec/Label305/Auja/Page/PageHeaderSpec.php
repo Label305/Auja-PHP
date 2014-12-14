@@ -51,7 +51,7 @@ class PageHeaderSpec extends BaseSpec  {
         $this->getButtons()[0]->shouldBe($button);
     }
 
-    function it_can_return_json_serializable_data(Button $button){
+    function it_can_return_basic_serializable_data(Button $button){
         $this->setText('Text');
         $this->addButton($button);
         $button->basicSerialize()->shouldBeCalled();

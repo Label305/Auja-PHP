@@ -23,6 +23,8 @@
 
 namespace Label305\Auja;
 
+use JsonSerializable;
+
 /**
  * The base class of all items in Auja.
  *
@@ -37,7 +39,7 @@ namespace Label305\Auja;
  * @package Label305\Auja
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-abstract class AujaItem {
+abstract class AujaItem implements JsonSerializable {
 
     /**
      * @return String The type of the `AujaItem`.

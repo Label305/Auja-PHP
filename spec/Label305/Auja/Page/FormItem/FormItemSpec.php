@@ -75,10 +75,10 @@ class FormItemSpec extends BaseSpec {
         $this->setValue('Value');
         $this->setRequired(true);
 
-        $this->jsonSerialize()->shouldHaveCount(4);
-        $this->jsonSerialize()->shouldHaveKeyValuePair('label', 'Label');
-        $this->jsonSerialize()->shouldHaveKeyValuePair('name', 'Name');
-        $this->jsonSerialize()->shouldHaveKeyValuePair('value', 'Value');
-        $this->jsonSerialize()->shouldHaveKeyValuePair('required', 'true');
+        $this->basicSerialize()->shouldHaveCount(4);
+        $this->basicSerialize()->shouldHaveKeyValuePair('label', 'Label');
+        $this->basicSerialize()->shouldHaveKeyValuePair('name', 'Name');
+        $this->basicSerialize()->shouldHaveKeyValuePair('value', 'Value');
+        $this->basicSerialize()->shouldHaveKeyValuePair('required', 'true');
     }
 }

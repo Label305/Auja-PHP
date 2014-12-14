@@ -71,7 +71,7 @@ class PageSpec extends BaseSpec {
         $this->addPageComponent($pageComponent1);
         $this->addPageComponent($pageComponent2);
 
-        $this->jsonSerialize()->shouldHaveCount(2);
+        $this->basicSerialize()->shouldHaveCount(2);
 
         $pageComponent1->aujaSerialize()->shouldBeCalled();
         $pageComponent2->aujaSerialize()->shouldBeCalled();

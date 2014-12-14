@@ -81,14 +81,14 @@ class PageHeader extends PageComponent {
         return $this->buttons;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         $result['text'] = $this->text;
 
         $result['buttons'] = array();
         foreach ($this->buttons as $button) {
-            $result['buttons'][] = $button->jsonSerialize();
+            $result['buttons'][] = $button->basicSerialize();
         }
 
         return $result;

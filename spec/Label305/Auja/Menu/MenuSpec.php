@@ -69,9 +69,9 @@ class MenuSpec extends BaseSpec {
         $this->addMenuItem($menuItem1);
         $this->addMenuItem($menuItem2);
 
-        $this->jsonSerialize()->shouldHaveCount(2);
+        $this->basicSerialize()->shouldHaveCount(2);
 
-        $menuItem1->jsonSerialize()->shouldBeCalled();
-        $menuItem2->jsonSerialize()->shouldBeCalled();
+        $menuItem1->basicSerialize()->shouldBeCalled();
+        $menuItem2->basicSerialize()->shouldBeCalled();
     }
 }

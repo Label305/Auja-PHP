@@ -77,11 +77,11 @@ class Menu extends AujaItem {
         return $this->menuItems;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         foreach ($this->menuItems as $menuItem) {
-            $result[] = $menuItem->jsonSerialize();
+            $result[] = $menuItem->basicSerialize();
         }
 
         return $result;

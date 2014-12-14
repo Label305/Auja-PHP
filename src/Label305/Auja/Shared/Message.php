@@ -98,7 +98,7 @@ class Message extends AujaItem {
         $this->authenticated = $authenticated;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         if (!is_null($this->state)) {

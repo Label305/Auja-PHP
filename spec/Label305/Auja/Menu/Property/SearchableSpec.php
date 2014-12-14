@@ -57,7 +57,7 @@ class SearchableSpec extends BaseSpec {
     }
 
     function it_returns_the_target_when_json_serialized() {
-        $data = $this->jsonSerialize()->getWrappedObject();
+        $data = $this->basicSerialize()->getWrappedObject();
         if(!isset($data['searchable']['target']) || $data['searchable']['target'] != self::TARGET){
             throw new \Exception('Invalid target');
         }

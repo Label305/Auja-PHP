@@ -41,9 +41,9 @@ class PropertySpec extends BaseSpec {
     }
 
     function it_can_return_json_serializable_data() {
-        $this->jsonSerialize()->shouldBeArray();
-        $this->jsonSerialize()->shouldHaveCount(1);
-        $this->jsonSerialize()->shouldHaveKey('dummy');
+        $this->basicSerialize()->shouldBeArray();
+        $this->basicSerialize()->shouldHaveCount(1);
+        $this->basicSerialize()->shouldHaveKey('dummy');
     }
 }
 

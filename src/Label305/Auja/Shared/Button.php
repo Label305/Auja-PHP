@@ -122,7 +122,7 @@ class Button extends AujaItem {
         $this->method = $method;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         $result['text'] = $this->text;
@@ -137,11 +137,11 @@ class Button extends AujaItem {
     }
 
     /**
-     * Overridden to return the direct result of `jsonSerialize()`.
+     * Overridden to return the direct result of `basicSerialize()`.
      *
-     * @return array The result of `jsonSerialize()`.
+     * @return array The result of `basicSerialize()`.
      */
     public function aujaSerialize() {
-        return $this->jsonSerialize();
+        return $this->basicSerialize();
     }
 }

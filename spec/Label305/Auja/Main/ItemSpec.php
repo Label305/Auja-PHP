@@ -54,14 +54,14 @@ class ItemSpec extends BaseSpec {
     }
 
     function it_can_return_json_serializable_data() {
-        $this->jsonSerialize()->shouldHaveKeys(array(
+        $this->basicSerialize()->shouldHaveKeys(array(
             'title',
             'icon',
             'target'
         ));
     }
 
-    function it_returns_jsonSerialize_as_aujaSerialize() {
-        $this->aujaSerialize()->shouldReturn($this->jsonSerialize());
+    function it_returns_basicSerialize_as_aujaSerialize() {
+        $this->aujaSerialize()->shouldReturn($this->basicSerialize());
     }
 }

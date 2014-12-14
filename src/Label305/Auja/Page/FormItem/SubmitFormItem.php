@@ -61,7 +61,7 @@ class SubmitFormItem extends FormItem {
         return self::TYPE;
     }
 
-    function jsonSerialize() {
+    function basicSerialize() {
         $result = array();
 
         $result['text'] = $this->text;

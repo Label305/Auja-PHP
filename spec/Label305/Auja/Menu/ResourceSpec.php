@@ -61,8 +61,8 @@ class ResourceSpec extends BaseSpec {
     function it_can_return_jsonserializable_data(MenuItem $linkMenuItem) {
         $this->addItem($linkMenuItem);
 
-        $linkMenuItem->jsonSerialize()->shouldBeCalled();
-        $this->jsonSerialize()->shouldHaveCount(1);
+        $linkMenuItem->basicSerialize()->shouldBeCalled();
+        $this->basicSerialize()->shouldHaveCount(1);
     }
 
     function it_adds_an_extra_paging_section_to_aujaSerialize() {

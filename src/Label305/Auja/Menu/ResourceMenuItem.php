@@ -90,7 +90,7 @@ class ResourceMenuItem extends MenuItem {
 
         $result['properties'] = [];
         foreach ($this->properties as $property){
-            $data = $property->jsonSerialize();
+            $data = $property->basicSerialize();
             $result['properties'][key($data)] = $data[key($data)];
         }
 

@@ -112,7 +112,7 @@ abstract class FormItem extends AujaItem {
         return $this->required;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         $result['name'] = $this->name;
@@ -123,4 +123,4 @@ abstract class FormItem extends AujaItem {
         return $result;
     }
 
-} 
+}

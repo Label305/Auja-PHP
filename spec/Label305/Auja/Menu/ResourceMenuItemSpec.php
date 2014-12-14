@@ -66,9 +66,9 @@ class ResourceMenuItemSpec extends BaseSpec {
         $property = new DummyProperty('target');
         $this->addProperty($property);
 
-        $this->jsonSerialize()->shouldHaveKey('resource');
+        $this->basicSerialize()->shouldHaveKey('resource');
 
-        $data = $this->jsonSerialize()->getWrappedObject();
+        $data = $this->basicSerialize()->getWrappedObject();
         if(!is_array($data['resource']['properties'])) {
             throw new \Exception('properties value is no array');
         }

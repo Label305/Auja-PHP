@@ -73,7 +73,7 @@ abstract class MenuItem extends AujaItem {
         return $this->order;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         $result['type'] = $this->getMenuType();

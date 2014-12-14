@@ -65,12 +65,12 @@ class SelectFormItem extends FormItem {
         $this->options[] = $option;
     }
 
-    public function jsonSerialize() {
-        $result = parent::jsonSerialize();
+    public function basicSerialize() {
+        $result = parent::basicSerialize();
 
         $result['options'] = [];
         foreach ($this->options as $option) {
-            $result['options'][] = $option->jsonSerialize();
+            $result['options'][] = $option->basicSerialize();
         }
 
         return $result;

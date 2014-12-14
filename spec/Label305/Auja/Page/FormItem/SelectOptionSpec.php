@@ -60,8 +60,8 @@ class SelectOptionSpec extends BaseSpec {
     }
 
     function it_can_return_jsonserializable_data() {
-        $this->jsonSerialize()->shouldContain('label');
-        $this->jsonSerialize()->shouldContain('value');
+        $this->basicSerialize()->shouldContain('label');
+        $this->basicSerialize()->shouldContain('value');
     }
 
 }

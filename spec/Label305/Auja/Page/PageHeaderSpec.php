@@ -54,12 +54,12 @@ class PageHeaderSpec extends BaseSpec  {
     function it_can_return_json_serializable_data(Button $button){
         $this->setText('Text');
         $this->addButton($button);
-        $button->jsonSerialize()->shouldBeCalled();
+        $button->basicSerialize()->shouldBeCalled();
 
-        $this->jsonSerialize()->shouldHaveCount(2);
-        $this->jsonSerialize()->shouldHaveKeyValuePair('text', 'Text');
-        $this->jsonSerialize()->shouldHaveKey('buttons');
-        $this->jsonSerialize()['buttons']->shouldBeArray();
-        $this->jsonSerialize()['buttons']->shouldHaveCount(1);
+        $this->basicSerialize()->shouldHaveCount(2);
+        $this->basicSerialize()->shouldHaveKeyValuePair('text', 'Text');
+        $this->basicSerialize()->shouldHaveKey('buttons');
+        $this->basicSerialize()['buttons']->shouldBeArray();
+        $this->basicSerialize()['buttons']->shouldHaveCount(1);
     }
 }

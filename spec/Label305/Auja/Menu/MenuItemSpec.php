@@ -52,7 +52,7 @@ class MenuItemSpec extends BaseSpec {
     function it_can_return_json_serializable_data() {
         $this->beAnInstanceOf('Label305\Auja\Menu\LinkMenuItem');
 
-        $this->jsonSerialize()->shouldHaveKeys(array(
+        $this->basicSerialize()->shouldHaveKeys(array(
             'type',
             'order',
             'link'

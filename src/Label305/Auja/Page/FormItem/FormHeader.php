@@ -58,7 +58,7 @@ class FormHeader extends FormItem {
         return $this->text;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
         $result['text'] = $this->text;
         return $result;

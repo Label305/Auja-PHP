@@ -64,9 +64,11 @@ class Item extends AujaItem {
 
     /**
      * @param String $title The title of this `Item`.
+     * @return $this
      */
     public function setTitle($title) {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -78,9 +80,11 @@ class Item extends AujaItem {
 
     /**
      * @param String $icon The icon name. See `Label305\Auja\Icons` for a list of supported icons.
+     * @return $this
      */
     public function setIcon($icon) {
         $this->icon = $icon;
+        return $this;
     }
 
     /**
@@ -92,11 +96,16 @@ class Item extends AujaItem {
 
     /**
      * @param String $target The target URL.
+     * @return $this
      */
     public function setTarget($target) {
         $this->target = $target;
+        return $this;
     }
 
+    /**
+     * @return array
+     */
     public function basicSerialize() {
         $result = array();
 

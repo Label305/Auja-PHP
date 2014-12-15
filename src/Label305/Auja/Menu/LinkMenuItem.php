@@ -66,16 +66,20 @@ class LinkMenuItem extends MenuItem {
 
     /**
      * @param String $text The name of the LinkMenuItem.
+     * @return $this
      */
     public function setText($text) {
         $this->text = $text;
+        return $this;
     }
 
     /**
      * @param String $target The target this link should point to.
+     * @return $this
      */
     public function setTarget($target) {
         $this->target = $target;
+        return $this;
     }
 
     /**
@@ -87,9 +91,11 @@ class LinkMenuItem extends MenuItem {
 
     /**
      * @param String $icon The name of the icon.
+     * @return $this
      */
     public function setIcon($icon) {
         $this->icon = $icon;
+        return $this;
     }
 
     /**

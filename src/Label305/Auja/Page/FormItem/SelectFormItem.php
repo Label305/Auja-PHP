@@ -53,18 +53,25 @@ class SelectFormItem extends FormItem {
 
     /**
      * @param SelectOption[] $options The options.
+     * @return $this
      */
     public function setOptions($options) {
         $this->options = $options;
+        return $this;
     }
 
     /**
      * @param SelectOption $option The option to add.
+     * @return $this
      */
     public function addOption(SelectOption $option) {
         $this->options[] = $option;
+        return $this;
     }
 
+    /**
+     * @return array
+     */
     public function basicSerialize() {
         $result = parent::basicSerialize();
 

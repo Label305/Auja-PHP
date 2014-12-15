@@ -53,8 +53,9 @@ class Menu extends AujaItem {
      * Adds a MenuItem to this Menu.
      *
      * @param MenuItem $menuItem The MenuItem to add.
-     * @param int      $position The position in the menu the MenuItem should have.
+     * @param int $position The position in the menu the MenuItem should have.
      *                           If not set, it is appended to the end.
+     * @return $this
      */
     public function addMenuItem(MenuItem $menuItem, $position = -1) {
         if (!is_int($position)) {
@@ -68,6 +69,8 @@ class Menu extends AujaItem {
         $menuItem->setOrder($position);
 
         Utils::array_insert($this->menuItems, $menuItem, $position);
+
+        return $this;
     }
 
     /**

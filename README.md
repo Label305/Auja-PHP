@@ -94,8 +94,9 @@ $menu = new Menu();
 
 /* Add a link item to add a club. */
 $addMenuItem = new LinkMenuItem();
-$addMenuItem->setName('Add');
-$addMenuItem->setTarget('/clubs/create');
+$addMenuItem
+    ->setName('Add')
+    ->setTarget('/clubs/create');
 $menu->addMenuItem($addMenuItem);
 
 /* Add a spacer. */
@@ -124,14 +125,16 @@ $resource = new Resource();
 
 /* Add Manchester United to the list. */
 $item = new LinkMenuItem();
-$item->setName('Manchester United');
-$item->setTarget('/clubs/1');
+$item
+    ->setName('Manchester United')
+    ->setTarget('/clubs/1');
 $resource->addItem($item);
 
 /* Add FC Bayern Munchen to the list. */
 $item = new LinkMenuItem();
-$item->setName('FC Bayern München');
-$item->setTarget('/clubs/2');
+$item
+    ->setName('FC Bayern München')
+    ->setTarget('/clubs/2');
 $resource->addItem($item);
 
 /* Provide a url to the next page of clubs. */
@@ -155,24 +158,27 @@ $pageHeader = new PageHeader();
 $pageHeader->setText('Edit Club');
 
 $deleteButton = new Button();
-$deleteButton->setText('Delete');
-$deleteButton->setConfirmationMessage('Are you sure?');
-$deleteButton->setTarget('/clubs/1');
-$deleteButton->setMethod('DELETE');
+$deleteButton
+    ->setText('Delete')
+    ->setConfirmationMessage('Are you sure?')
+    ->setTarget('/clubs/1')
+    ->setMethod('DELETE');
 $pageHeader->addButton($deleteButton);
 
 $page->addPageComponent($pageHeader);
 
 /* Add the form. */
 $form = new Form();
-$form->setAction('/clubs/1');
-$form->setMethod('PUT');
+$form
+    ->setAction('/clubs/1')
+    ->setMethod('PUT');
 
     /* Add a name text field.  */
     $nameFormItem = new TextFormItem();
-    $nameFormItem->setName('name');
-    $nameFormItem->setLabel('Name');
-    $nameFormItem->setValue($club->getName());
+    $nameFormItem
+        ->setName('name')
+        ->setLabel('Name')
+        ->setValue($club->getName());
     $form->addFormItem($nameFormItem);
     
     /* Add a submit button. */

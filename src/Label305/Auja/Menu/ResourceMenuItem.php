@@ -57,9 +57,11 @@ class ResourceMenuItem extends MenuItem {
 
     /**
      * @param String $target The target url where to fetch resource items.
+     * @return $this
      */
     public function setTarget($target) {
         $this->target = $target;
+        return $this;
     }
 
     /**
@@ -71,9 +73,11 @@ class ResourceMenuItem extends MenuItem {
 
     /**
      * @param Property $property The property to add.
+     * @return $this
      */
     public function addProperty(Property $property) {
         $this->properties[] = $property;
+        return $this;
     }
 
     /**

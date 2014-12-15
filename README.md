@@ -12,8 +12,6 @@ Auja is an easy-to-use, easy-to-implement admin interface. It provides an easy a
 
 The [Auja javascript frontend](https://github.com/Label305/Auja) provides the graphical user interface. To determine its content, it relies on a JSON web-service you implement. This repository in turn, provides an Object Oriented approach to provide these JSON messages from a PHP application.
 
-![Auja Screenshot](https://label305.github.io/Auja/images/auja-animated.gif)
-
 Related repositories
 -----------
   

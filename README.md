@@ -53,26 +53,30 @@ $main->addButton($logoutButton);
 
 /* Add a model. */
 $item = new Item();
-$item->setTitle('Club');
-$item->setIcon('tower');
-$item->setTarget('/clubs/menu');
+$item
+    ->setTitle('Club')
+    ->setIcon('tower')
+    ->setTarget('/clubs/menu');
 $menu->addMenuItem($item);
 
 /* Add an authentication form. */
 $authenticationForm = new Form();
-$authenticationForm->setAction('#login');
-$authenticationForm->setMethod('POST');
+$authenticationForm
+    ->setAction('#login')
+    ->setMethod('POST');
 
     /* Add a username text field. */
     $usernameTextFormItem = new TextFormItem();
-    $usernameTextFormItem->setName('username');
-    $usernameTextFormItem->setLabel('Username');
+    $usernameTextFormItem
+        ->setName('username')
+        ->setLabel('Username');
     $authenticationForm->addFormItem($usernameTextFormItem);
     
     /* Add a password field. */
     $passwordFormItem = new PasswordFormItem();
-    $passwordFormItem->setName('password');
-    $passwordFormItem->setLabel('Password');
+    $passwordFormItem
+        ->setName('password')
+        ->setLabel('Password');
     $result->addFormItem($passwordFormItem);
     
     /* Add a submit button. */

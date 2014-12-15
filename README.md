@@ -47,8 +47,9 @@ $main->setColor(Main::COLOR_MAIN, '#22bcb9');
 
 /* Add a logout button. */
 $logoutButton = new Button();
-$logoutButton->setTitle($logoutButton);
-$logoutButton->setTarget('#logout');
+$logoutButton
+  ->setTitle($logoutButton)
+  ->setTarget('#logout');
 $main->addButton($logoutButton);
 
 /* Add a model. */

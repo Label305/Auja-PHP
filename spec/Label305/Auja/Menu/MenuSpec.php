@@ -65,13 +65,13 @@ class MenuSpec extends BaseSpec {
         $this->shouldThrow('\InvalidArgumentException')->duringAddMenuitem($menuItem, 'Hello');
     }
 
-    function it_can_return_json_serializable_data(MenuItem $menuItem1, MenuItem $menuItem2) {
+    function it_can_return_basic_serializable_data(MenuItem $menuItem1, MenuItem $menuItem2) {
         $this->addMenuItem($menuItem1);
         $this->addMenuItem($menuItem2);
 
-        $this->jsonSerialize()->shouldHaveCount(2);
+        $this->basicSerialize()->shouldHaveCount(2);
 
-        $menuItem1->jsonSerialize()->shouldBeCalled();
-        $menuItem2->jsonSerialize()->shouldBeCalled();
+        $menuItem1->basicSerialize()->shouldBeCalled();
+        $menuItem2->basicSerialize()->shouldBeCalled();
     }
 }

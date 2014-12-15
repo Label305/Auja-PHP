@@ -38,10 +38,10 @@ class ButtonSpec extends BaseSpec {
         $this->getMethod()->shouldBe('Method');
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $this->setConfirmationMessage('Confirmation');
 
-        $this->jsonSerialize()->shouldHaveKeys(array(
+        $this->basicSerialize()->shouldHaveKeys(array(
             'text',
             'confirm',
             'target',
@@ -49,16 +49,16 @@ class ButtonSpec extends BaseSpec {
         ));
     }
 
-    function it_can_return_json_serializable_data_without_confirmation_message() {
-        $this->jsonSerialize()->shouldHaveCount(3);
-        $this->jsonSerialize()->shouldHaveKeys(array(
+    function it_can_return_basic_serializable_data_without_confirmation_message() {
+        $this->basicSerialize()->shouldHaveCount(3);
+        $this->basicSerialize()->shouldHaveKeys(array(
             'text',
             'target',
             'method'
         ));
     }
 
-    function it_returns_jsonSerialize_as_aujaSerialize() {
-        $this->aujaSerialize()->shouldReturn($this->jsonSerialize());
+    function it_returns_basicSerialize_as_aujaSerialize() {
+        $this->aujaSerialize()->shouldReturn($this->basicSerialize());
     }
 }

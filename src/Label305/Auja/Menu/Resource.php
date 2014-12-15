@@ -85,11 +85,11 @@ class Resource extends AujaItem {
         return $this->nextPageUrl;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         foreach ($this->items as $item) {
-            $result[] = $item->jsonSerialize();
+            $result[] = $item->basicSerialize();
         }
 
         return $result;
@@ -104,7 +104,7 @@ class Resource extends AujaItem {
         $result = array();
 
         $result['type'] = $this->getType();
-        $result[$this->getType()] = $this->jsonSerialize();
+        $result[$this->getType()] = $this->basicSerialize();
 
         if ($this->nextPageUrl != null) {
             $result['paging'] = array();

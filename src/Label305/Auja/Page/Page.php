@@ -74,7 +74,7 @@ class Page extends AujaItem {
         return $this->pageComponents;
     }
 
-    function jsonSerialize() {
+    function basicSerialize() {
         $result = array();
 
         foreach ($this->pageComponents as $pageComponent) {

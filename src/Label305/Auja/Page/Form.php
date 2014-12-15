@@ -100,7 +100,7 @@ class Form extends PageComponent {
         return $this->items;
     }
 
-    function jsonSerialize() {
+    function basicSerialize() {
         $result = array();
 
         $result['action'] = $this->action;

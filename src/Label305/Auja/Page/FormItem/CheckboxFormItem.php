@@ -62,8 +62,8 @@ class CheckboxFormItem extends FormItem {
         $this->checked = $checked;
     }
 
-    public function jsonSerialize() {
-        $result = parent::jsonSerialize();
+    public function basicSerialize() {
+        $result = parent::basicSerialize();
 
         $result['checked'] = $this->checked;
 

@@ -23,11 +23,13 @@
 
 namespace Label305\Auja;
 
+use JsonSerializable;
+
 /**
  * The base class of all items in Auja.
  *
- * It provides amongst others both `jsonSerialize()` and `aujaSerialize()` methods, where:
- *  - `jsonSerialize()` should provide an array with key value pairs of properties of the AujaItem;
+ * It provides amongst others both `basicSerialize()` and `aujaSerialize()` methods, where:
+ *  - `basicSerialize()` should provide an array with key value pairs of properties of the AujaItem;
  *  - `aujaSerialize()` provides an array with at least the same properties which can directly be used to provide to the GUI.
  *
  * For convenience, the `__toString()` method is overriden to return the Json encoded value of the result of `aujaSerialize()`.
@@ -37,7 +39,7 @@ namespace Label305\Auja;
  * @package Label305\Auja
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-abstract class AujaItem {
+abstract class AujaItem implements JsonSerializable {
 
     /**
      * @return String The type of the `AujaItem`.
@@ -47,14 +49,14 @@ abstract class AujaItem {
     /**
      * @return array An `array` of key-value pairs of properties of this `AujaItem`.
      */
-    public abstract function jsonSerialize();
+    public abstract function basicSerialize();
 
     /**
      * Returns a ready-to-use `array` to be provided to the Auja GUI.
      *
      * This typically (but not always) consists of:
      *  - a `type` key with a value of `getType()`;
-     *  - a `getType()` key with a value of `jsonSerialize()`. This will contain the properties of this `AujaItem`.
+     *  - a `getType()` key with a value of `basicSerialize()`. This will contain the properties of this `AujaItem`.
      *
      * @return array The ready-to-use `array`.
      */
@@ -62,7 +64,7 @@ abstract class AujaItem {
         $result = array();
 
         $result['type'] = $this->getType();
-        $result[$this->getType()] = $this->jsonSerialize();
+        $result[$this->getType()] = $this->basicSerialize();
 
         return $result;
     }
@@ -71,7 +73,11 @@ abstract class AujaItem {
      * @return String The Json encoded value of the result of `aujaSerialize()`.
      */
     function __toString() {
-        return json_encode($this->aujaSerialize());
+        return json_encode($this);
+    }
+
+    function jsonSerialize() {
+        return $this->aujaSerialize();
     }
 
 }

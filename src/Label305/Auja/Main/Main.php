@@ -212,7 +212,7 @@ class Main extends AujaItem {
         $this->authentication = $authentication;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = array();
 
         $result['title'] = $this->getTitle();
@@ -223,12 +223,12 @@ class Main extends AujaItem {
 
         $result['buttons'] = array();
         foreach ($this->getButtons() as $button) {
-            $result['buttons'][] = $button->jsonSerialize();
+            $result['buttons'][] = $button->basicSerialize();
         }
 
         $result['menu'] = array();
         foreach ($this->getItems() as $item) {
-            $result['menu'][] = $item->jsonSerialize();
+            $result['menu'][] = $item->basicSerialize();
         }
 
         if ($this->getAuthenticationForm() != null) {

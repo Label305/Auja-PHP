@@ -86,7 +86,7 @@ class SelectOption extends AujaItem {
         $this->value = $value;
     }
 
-    public function jsonSerialize() {
+    public function basicSerialize() {
         $result = [];
 
         $result['label'] = $this->label;

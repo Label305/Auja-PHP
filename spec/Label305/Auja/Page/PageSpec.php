@@ -67,11 +67,11 @@ class PageSpec extends BaseSpec {
         $this->shouldThrow('\InvalidArgumentException')->duringAddPageComponent($pageComponent, 'Hello');
     }
 
-    function it_can_return_json_serializable_data(PageComponent $pageComponent1, PageComponent $pageComponent2) {
+    function it_can_return_basic_serializable_data(PageComponent $pageComponent1, PageComponent $pageComponent2) {
         $this->addPageComponent($pageComponent1);
         $this->addPageComponent($pageComponent2);
 
-        $this->jsonSerialize()->shouldHaveCount(2);
+        $this->basicSerialize()->shouldHaveCount(2);
 
         $pageComponent1->aujaSerialize()->shouldBeCalled();
         $pageComponent2->aujaSerialize()->shouldBeCalled();

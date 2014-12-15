@@ -52,9 +52,11 @@ class RangeFormItem extends FormItem {
 
     /**
      * @param integer $min The minimum value.
+     * @return $this
      */
     public function setMin($min) {
         $this->min = $min;
+        return $this;
     }
 
     /**
@@ -66,8 +68,10 @@ class RangeFormItem extends FormItem {
 
     /**
      * @param integer $max The maximum value.
+     * @return $this
      */
     public function setMax($max) {
         $this->max = $max;
+        return $this;
     }
 }

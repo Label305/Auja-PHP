@@ -65,9 +65,11 @@ class Form extends PageComponent {
 
     /**
      * @param String $action The target url to call when submitting this `Form`.
+     * @return $this
      */
     public function setAction($action) {
         $this->action = $action;
+        return $this;
     }
 
     /**
@@ -79,18 +81,22 @@ class Form extends PageComponent {
 
     /**
      * @param String $method The HTTP method to use when submitting this `Form`, such as `POST`, or `PUT`. Defaults to 'GET'.
+     * @return $this
      */
     public function setMethod($method) {
         $this->method = $method;
+        return $this;
     }
 
     /**
      * Adds a `FormItem` to this `Form`.
      *
      * @param FormItem $item The `FormItem` to add.
+     * @return $this
      */
     public function addFormItem(FormItem $item) {
         $this->items[] = $item;
+        return $this;
     }
 
     /**
@@ -100,6 +106,9 @@ class Form extends PageComponent {
         return $this->items;
     }
 
+    /**
+     * @return array
+     */
     function basicSerialize() {
         $result = array();
 

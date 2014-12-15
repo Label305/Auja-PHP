@@ -55,6 +55,7 @@ class Resource extends AujaItem {
      * Adds a `MenuItem`, which contains a database entry.
      *
      * @param MenuItem $item The item to add. Must not be a `ResourceMenuItem`.
+     * @return $this
      */
     public function addItem(MenuItem $item) {
         if($item instanceof ResourceMenuItem){
@@ -62,6 +63,8 @@ class Resource extends AujaItem {
         }
 
         $this->items[] = $item;
+
+        return $this;
     }
 
     /**
@@ -73,9 +76,11 @@ class Resource extends AujaItem {
 
     /**
      * @param String|null $nextPageUrl The url to the next set of items, or `null` if none.
+     * @return $this
      */
     public function setNextPageUrl($nextPageUrl) {
         $this->nextPageUrl = $nextPageUrl;
+        return $this;
     }
 
     /**
@@ -85,6 +90,9 @@ class Resource extends AujaItem {
         return $this->nextPageUrl;
     }
 
+    /**
+     * @return array
+     */
     public function basicSerialize() {
         $result = array();
 

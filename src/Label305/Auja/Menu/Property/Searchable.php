@@ -54,6 +54,7 @@ class Searchable extends Property {
     /**
      * @param String $target The target url. It should contain '%s' where the search query should go.
      *
+     * @return $this
      * @throws \InvalidArgumentException if the target is invalid.
      */
     public function setTarget($target) {
@@ -61,6 +62,7 @@ class Searchable extends Property {
             throw new \InvalidArgumentException('Searchable target url should contain \'%s\'.');
         }
         $this->target = $target;
+        return $this;
     }
 
     /**

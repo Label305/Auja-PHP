@@ -53,9 +53,11 @@ class PageHeader extends PageComponent {
 
     /**
      * @param String $text The text to display.
+     * @return String
      */
     public function setText($text) {
         $this->text = $text;
+        return $text;
     }
 
     /**
@@ -69,9 +71,11 @@ class PageHeader extends PageComponent {
      * Adds a `Button` to this `PageHeader`.
      *
      * @param Button $button The `Button` to add.
+     * @return $this
      */
     public function addButton(Button $button) {
         $this->buttons[] = $button;
+        return $this;
     }
 
     /**
@@ -81,6 +85,9 @@ class PageHeader extends PageComponent {
         return $this->buttons;
     }
 
+    /**
+     * @return array
+     */
     public function basicSerialize() {
         $result = array();
 

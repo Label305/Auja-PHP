@@ -61,9 +61,11 @@ abstract class MenuItem extends AujaItem {
      * This method should usually not be called, as Menu handles this for you.
      *
      * @param int $order The order of this MenuItem in the Menu.
+     * @return $this
      */
     public function setOrder($order) {
         $this->order = $order;
+        return $this;
     }
 
     /**
@@ -73,6 +75,9 @@ abstract class MenuItem extends AujaItem {
         return $this->order;
     }
 
+    /**
+     * @return array
+     */
     public function basicSerialize() {
         $result = array();
 

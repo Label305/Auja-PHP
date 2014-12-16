@@ -31,9 +31,9 @@ namespace Label305\Auja\Menu\Property;
  * @package Label305\Auja\Menu\Property
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-class Searchable extends Property {
+class Sortable extends Property {
 
-    const TYPE = 'searchable';
+    const TYPE = 'sortable';
 
     /**
      * @var String The target url.
@@ -52,15 +52,12 @@ class Searchable extends Property {
     }
 
     /**
-     * @param String $target The target url. It should contain '%s' where the search query should go.
+     * @param String $target The target url.
      *
      * @return $this
      * @throws \InvalidArgumentException if the target is invalid.
      */
     public function setTarget($target) {
-        if (strpos($target, '%s') === false) {
-            throw new \InvalidArgumentException('Searchable target url should contain \'%s\'.');
-        }
         $this->target = $target;
         return $this;
     }
@@ -87,4 +84,5 @@ class Searchable extends Property {
     public function getType() {
         return self::TYPE;
     }
-}
+
+} 

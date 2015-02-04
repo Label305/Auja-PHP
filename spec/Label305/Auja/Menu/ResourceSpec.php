@@ -58,6 +58,11 @@ class ResourceSpec extends BaseSpec {
         $this->getNextPageUrl()->shouldBe('url');
     }
 
+    function it_has_a_last_page_url() {
+        $this->setLastPageUrl('url');
+        $this->getLastPageUrl()->shouldBe('url');
+    }
+
     function it_can_return_basic_serializable_data(MenuItem $linkMenuItem) {
         $this->addItem($linkMenuItem);
 

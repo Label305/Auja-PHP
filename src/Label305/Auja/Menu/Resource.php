@@ -47,6 +47,11 @@ class Resource extends AujaItem {
      */
     private $nextPageUrl;
 
+    /**
+     * @var String|null The url to the last set of items, or `null` if none.
+     */
+    private $lastPageUrl;
+
     public function getType() {
         return self::TYPE;
     }
@@ -90,6 +95,22 @@ class Resource extends AujaItem {
         return $this->nextPageUrl;
     }
 
+        /**
+     * @param String|null $nextPageUrl The url to the next set of items, or `null` if none.
+     * @return $this
+     */
+    public function setLastPageUrl($lastPageUrl) {
+        $this->lastPageUrl = $lastPageUrl;
+        return $this;
+    }
+
+    /**
+     * @return String The url to the next set of items, or `null` if none.
+     */
+    public function getLastPageUrl() {
+        return $this->lastPageUrl;
+    }
+
     /**
      * @return array
      */
@@ -114,9 +135,14 @@ class Resource extends AujaItem {
         $result['type'] = $this->getType();
         $result[$this->getType()] = $this->basicSerialize();
 
-        if ($this->nextPageUrl != null) {
+        if ($this->nextPageUrl != null || $this->lastPageUrl != null) {
             $result['paging'] = array();
-            $result['paging']['next'] = $this->nextPageUrl;
+            if ($this->nextPageUrl != null) {
+                $result['paging']['next'] = $this->nextPageUrl;
+            }
+            if ($this->lastPageUrl != null) {
+                $result['paging']['total'] = $this->lastPageUrl;
+            }
         }
 
         return $result;

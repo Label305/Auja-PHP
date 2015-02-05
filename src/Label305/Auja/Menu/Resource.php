@@ -48,9 +48,9 @@ class Resource extends AujaItem {
     private $nextPageUrl;
 
     /**
-     * @var String|null The url to the last set of items, or `null` if none.
+     * @var String|null The url to get all the items up until the current page, or `null` if none.
      */
-    private $lastPageUrl;
+    private $totalPageUrl;
 
     public function getType() {
         return self::TYPE;
@@ -99,16 +99,16 @@ class Resource extends AujaItem {
      * @param String|null $nextPageUrl The url to the next set of items, or `null` if none.
      * @return $this
      */
-    public function setLastPageUrl($lastPageUrl) {
-        $this->lastPageUrl = $lastPageUrl;
+    public function setTotalPageUrl($totalPageUrl) {
+        $this->totalPageUrl = $totalPageUrl;
         return $this;
     }
 
     /**
      * @return String The url to the next set of items, or `null` if none.
      */
-    public function getLastPageUrl() {
-        return $this->lastPageUrl;
+    public function getTotalPageUrl() {
+        return $this->totalPageUrl;
     }
 
     /**
@@ -135,13 +135,13 @@ class Resource extends AujaItem {
         $result['type'] = $this->getType();
         $result[$this->getType()] = $this->basicSerialize();
 
-        if ($this->nextPageUrl != null || $this->lastPageUrl != null) {
+        if ($this->nextPageUrl != null || $this->totalPageUrl != null) {
             $result['paging'] = array();
             if ($this->nextPageUrl != null) {
                 $result['paging']['next'] = $this->nextPageUrl;
             }
-            if ($this->lastPageUrl != null) {
-                $result['paging']['total'] = $this->lastPageUrl;
+            if ($this->totalPageUrl != null) {
+                $result['paging']['total'] = $this->totalPageUrl;
             }
         }
 

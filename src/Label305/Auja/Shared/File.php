@@ -134,7 +134,7 @@ class File extends AujaItem {
     {
         $error = $this->getError();
 
-        if ($error == null) {
+        if ($error !== null) {
             return ['error' => $error];
         }
 

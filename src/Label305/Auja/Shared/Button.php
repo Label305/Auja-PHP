@@ -75,16 +75,20 @@ class Button extends AujaItem {
 
     /**
      * @param String $text The text on this `Button`.
+     * @return String
      */
     public function setText($text) {
         $this->text = $text;
+        return $text;
     }
 
     /**
      * @param String|null $confirmationMessage The confirmation message. `null` for no confirmation.
+     * @return $this
      */
     public function setConfirmationMessage($confirmationMessage) {
         $this->confirmationMessage = $confirmationMessage;
+        return $this;
     }
 
     /**
@@ -103,9 +107,11 @@ class Button extends AujaItem {
 
     /**
      * @param String $target The target URL.
+     * @return String
      */
     public function setTarget($target) {
         $this->target = $target;
+        return $target;
     }
 
     /**
@@ -117,12 +123,17 @@ class Button extends AujaItem {
 
     /**
      * @param String $method The HTTP method to use.
+     * @return $this
      */
     public function setMethod($method) {
         $this->method = $method;
+        return $this;
     }
 
-    public function jsonSerialize() {
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
         $result = array();
 
         $result['text'] = $this->text;
@@ -137,11 +148,11 @@ class Button extends AujaItem {
     }
 
     /**
-     * Overridden to return the direct result of `jsonSerialize()`.
+     * Overridden to return the direct result of `basicSerialize()`.
      *
-     * @return array The result of `jsonSerialize()`.
+     * @return array The result of `basicSerialize()`.
      */
     public function aujaSerialize() {
-        return $this->jsonSerialize();
+        return $this->basicSerialize();
     }
 }

@@ -53,10 +53,10 @@ class SelectFormItemSpec extends BaseSpec {
         $this->getOptions()->shouldContain($option2);
     }
 
-    function it_returns_options_in_jsonserializable_data(SelectOption $option1, SelectOption $option2) {
+    function it_returns_options_in_basic_serializable_data(SelectOption $option1, SelectOption $option2) {
         $this->setOptions([$option1, $option2]);
 
-        $result = $this->jsonSerialize();
+        $result = $this->basicSerialize();
         $data = $result->getWrappedObject();
 
         if (!sizeof($data['options'], 2)) {

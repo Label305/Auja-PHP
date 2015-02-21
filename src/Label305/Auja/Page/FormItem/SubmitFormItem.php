@@ -49,9 +49,11 @@ class SubmitFormItem extends FormItem {
 
     /**
      * @param String $text The text to show.
+     * @return $this
      */
     public function setText($text) {
         $this->text = $text;
+        return $this;
     }
 
     /**
@@ -61,7 +63,10 @@ class SubmitFormItem extends FormItem {
         return self::TYPE;
     }
 
-    function jsonSerialize() {
+    /**
+     * @return array
+     */
+    function basicSerialize() {
         $result = array();
 
         $result['text'] = $this->text;

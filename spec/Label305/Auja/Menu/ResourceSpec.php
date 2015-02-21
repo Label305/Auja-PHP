@@ -58,11 +58,16 @@ class ResourceSpec extends BaseSpec {
         $this->getNextPageUrl()->shouldBe('url');
     }
 
-    function it_can_return_jsonserializable_data(MenuItem $linkMenuItem) {
+    function it_has_a_total_page_url() {
+        $this->setTotalPageUrl('url');
+        $this->getTotalPageUrl()->shouldBe('url');
+    }
+
+    function it_can_return_basic_serializable_data(MenuItem $linkMenuItem) {
         $this->addItem($linkMenuItem);
 
-        $linkMenuItem->jsonSerialize()->shouldBeCalled();
-        $this->jsonSerialize()->shouldHaveCount(1);
+        $linkMenuItem->basicSerialize()->shouldBeCalled();
+        $this->basicSerialize()->shouldHaveCount(1);
     }
 
     function it_adds_an_extra_paging_section_to_aujaSerialize() {

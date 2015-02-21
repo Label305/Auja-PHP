@@ -26,28 +26,16 @@ namespace spec\Label305\Auja\Page\FormItem;
 set_include_path(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . PATH_SEPARATOR . get_include_path());
 require_once('BaseSpec.php'); // TODO: can this be prettier?
 
-use Prophecy\Argument;
 use spec\Label305\Auja\BaseSpec;
 
-class FormHeaderSpec extends BaseSpec  {
+class HiddenFormItemSpec extends BaseSpec {
 
     function it_is_initializable() {
-        $this->shouldHaveType('Label305\Auja\Page\FormItem\FormHeader');
+        $this->shouldHaveType('Label305\Auja\Page\FormItem\HiddenFormItem');
     }
 
-    function it_has_a_header_type(){
-        $this->getType()->shouldBe('header');
+    function it_has_type_hidden() {
+        $this->getType()->shouldBe('hidden');
     }
 
-    function it_has_text(){
-        $this->setText('Text');
-        $this->getText()->shouldBe('Text');
-    }
-
-    function it_can_return_basic_serializable_data(){
-        $this->setText('Text');
-
-        $this->basicSerialize()->shouldHaveCount(1);
-        $this->basicSerialize()->shouldHaveKeyValuePair('text', 'Text');
-    }
 }

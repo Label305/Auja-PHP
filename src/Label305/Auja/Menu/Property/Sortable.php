@@ -23,32 +23,66 @@
 
 namespace Label305\Auja\Menu\Property;
 
-
-use Label305\Auja\AujaItem;
-
 /**
- * A class which represents a property of a ResourceMenuItem.
+ * A class which represents the Searchable property.
  *
  * @author  Niek Haarman - <niek@label305.com>
  *
  * @package Label305\Auja\Menu\Property
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-abstract class Property extends AujaItem {
+class Sortable extends Property {
+
+    const TYPE = 'sortable';
 
     /**
-     * @return array An `array` of key-value pairs of properties of this `AujaItem`.
+     * @var String The target url.
      */
-    public function basicSerialize() {
-        $result = [];
-        $result[$this->getType()] = $this->getProperties();
-        return $result;
+    private $target;
+
+    /**
+     * Creates a new searchable property with given target.
+     *
+     * @param String $target The target url. It should contain '%s' where the search query should go.
+     *
+     * @throws \InvalidArgumentException if the target is invalid.
+     */
+    function __construct($target) {
+        $this->setTarget($target);
     }
 
     /**
-     * @return array An array of key value pairs with the specific properties of the Property.
+     * @param String $target The target url.
+     *
+     * @return $this
+     * @throws \InvalidArgumentException if the target is invalid.
      */
-    function getProperties() {
-        return [];
+    public function setTarget($target) {
+        $this->target = $target;
+        return $this;
     }
-}
+
+    /**
+     * @return String The target url.
+     */
+    public function getTarget() {
+        return $this->target;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties() {
+        return [
+            'target' => $this->target
+        ];
+    }
+
+    /**
+     * @return String
+     */
+    public function getType() {
+        return self::TYPE;
+    }
+
+} 

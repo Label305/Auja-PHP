@@ -46,9 +46,11 @@ class FormHeader extends FormItem {
 
     /**
      * @param String $text The text to display.
+     * @return $this
      */
     public function setText($text) {
         $this->text = $text;
+        return $this;
     }
 
     /**
@@ -58,7 +60,10 @@ class FormHeader extends FormItem {
         return $this->text;
     }
 
-    public function jsonSerialize() {
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
         $result = array();
         $result['text'] = $this->text;
         return $result;

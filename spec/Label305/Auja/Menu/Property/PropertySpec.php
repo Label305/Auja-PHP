@@ -40,10 +40,10 @@ class PropertySpec extends BaseSpec {
         $this->shouldHaveType('Label305\Auja\Menu\Property\Property');
     }
 
-    function it_can_return_json_serializable_data() {
-        $this->jsonSerialize()->shouldBeArray();
-        $this->jsonSerialize()->shouldHaveCount(1);
-        $this->jsonSerialize()->shouldHaveKey('dummy');
+    function it_can_return_basic_serializable_data() {
+        $this->basicSerialize()->shouldBeArray();
+        $this->basicSerialize()->shouldHaveCount(1);
+        $this->basicSerialize()->shouldHaveKey('dummy');
     }
 }
 

@@ -1,20 +1,22 @@
-# Auja-PHP
+Auja PHP Development Kit
+==============
 
 [![Build Status](https://travis-ci.org/Label305/Auja-PHP.svg?branch=master)](https://travis-ci.org/Label305/Auja-PHP)
 [![Coverage Status](https://coveralls.io/repos/Label305/Auja-PHP/badge.png?branch=master)](https://coveralls.io/r/Label305/Auja-PHP?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/54899173746eb519300002eb/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54899173746eb519300002eb)
 [![Latest Stable Version](https://poser.pugx.org/label305/auja/v/stable.svg)](https://packagist.org/packages/label305/auja)
 [![Total Downloads](https://poser.pugx.org/label305/auja/downloads.svg)](https://packagist.org/packages/label305/auja)
 [![Latest Unstable Version](https://poser.pugx.org/label305/auja/v/unstable.svg)](https://packagist.org/packages/label305/auja)
 
-[Auja](http://label305.github.io/Auja/) is an easy-to-use and easy-to-implement back-end interface. It provides an easy and intuitive way for you to view and manipulate your data, so you can focus on more important matters. Auja is designed to be both user-friendly _and_ developer-friendly by providing you with tools to setup your back-end in no more than five minutes.
+Auja is an easy-to-use, easy-to-implement admin interface. It provides an easy and intuitive way for you to view and manipulate your data, so you can focus on more important matters. Auja is designed to be both user-friendly _and_ developer-friendly by providing you with tools to setup your admin interface in a couple of minutes.
 
-Auja's basis is the [Auja JavaScript repository](https://github.com/Label305/Auja), which provides the graphical user interface. To determine its content, it relies on specific JSON messages. In this repository, you can find the PHP objects which can provide these JSON messages for you.
+The [Auja javascript frontend](https://github.com/Label305/Auja) provides the graphical user interface. To determine its content, it relies on a JSON web-service you implement. This repository in turn, provides an Object Oriented approach to provide these JSON messages from a PHP application.
 
-## Related repositories
+Related repositories
+-----------
   
-  - [**Auja**](https://github.com/Label305/Auja) - The JavaScript GUI implementation.
-  - [**Auja-Laravel**](https://github.com/Label305/Auja-Laravel) - An implementation of Auja for the Laravel framework.
-  - [**Auja-Laravel-Example**](https://github.com/Label305/Auja-Laravel-Example) - An example Laravel project using Auja.
+  - [**Auja**](https://github.com/Label305/Auja) - The frontend JavaScript GUI
+  - [**Auja for Laravel**](https://github.com/Label305/Auja-Laravel) - An implementation of Auja for the Laravel framework
 
 ## Setup
 
@@ -45,32 +47,37 @@ $main->setColor(Main::COLOR_MAIN, '#22bcb9');
 
 /* Add a logout button. */
 $logoutButton = new Button();
-$logoutButton->setTitle($logoutButton);
-$logoutButton->setTarget('#logout');
+$logoutButton
+  ->setTitle($logoutButton)
+  ->setTarget('#logout');
 $main->addButton($logoutButton);
 
 /* Add a model. */
 $item = new Item();
-$item->setTitle('Club');
-$item->setIcon('tower');
-$item->setTarget('/clubs/menu');
+$item
+    ->setTitle('Club')
+    ->setIcon('tower')
+    ->setTarget('/clubs/menu');
 $menu->addMenuItem($item);
 
 /* Add an authentication form. */
 $authenticationForm = new Form();
-$authenticationForm->setAction('#login');
-$authenticationForm->setMethod('POST');
+$authenticationForm
+    ->setAction('#login')
+    ->setMethod('POST');
 
     /* Add a username text field. */
     $usernameTextFormItem = new TextFormItem();
-    $usernameTextFormItem->setName('username');
-    $usernameTextFormItem->setLabel('Username');
+    $usernameTextFormItem
+        ->setName('username')
+        ->setLabel('Username');
     $authenticationForm->addFormItem($usernameTextFormItem);
     
     /* Add a password field. */
     $passwordFormItem = new PasswordFormItem();
-    $passwordFormItem->setName('password');
-    $passwordFormItem->setLabel('Password');
+    $passwordFormItem
+        ->setName('password')
+        ->setLabel('Password');
     $result->addFormItem($passwordFormItem);
     
     /* Add a submit button. */
@@ -92,8 +99,9 @@ $menu = new Menu();
 
 /* Add a link item to add a club. */
 $addMenuItem = new LinkMenuItem();
-$addMenuItem->setName('Add');
-$addMenuItem->setTarget('/clubs/create');
+$addMenuItem
+    ->setName('Add')
+    ->setTarget('/clubs/create');
 $menu->addMenuItem($addMenuItem);
 
 /* Add a spacer. */
@@ -122,14 +130,16 @@ $resource = new Resource();
 
 /* Add Manchester United to the list. */
 $item = new LinkMenuItem();
-$item->setName('Manchester United');
-$item->setTarget('/clubs/1');
+$item
+    ->setName('Manchester United')
+    ->setTarget('/clubs/1');
 $resource->addItem($item);
 
 /* Add FC Bayern Munchen to the list. */
 $item = new LinkMenuItem();
-$item->setName('FC Bayern München');
-$item->setTarget('/clubs/2');
+$item
+    ->setName('FC Bayern München')
+    ->setTarget('/clubs/2');
 $resource->addItem($item);
 
 /* Provide a url to the next page of clubs. */
@@ -153,24 +163,27 @@ $pageHeader = new PageHeader();
 $pageHeader->setText('Edit Club');
 
 $deleteButton = new Button();
-$deleteButton->setText('Delete');
-$deleteButton->setConfirmationMessage('Are you sure?');
-$deleteButton->setTarget('/clubs/1');
-$deleteButton->setMethod('DELETE');
+$deleteButton
+    ->setText('Delete')
+    ->setConfirmationMessage('Are you sure?')
+    ->setTarget('/clubs/1')
+    ->setMethod('DELETE');
 $pageHeader->addButton($deleteButton);
 
 $page->addPageComponent($pageHeader);
 
 /* Add the form. */
 $form = new Form();
-$form->setAction('/clubs/1');
-$form->setMethod('PUT');
+$form
+    ->setAction('/clubs/1')
+    ->setMethod('PUT');
 
     /* Add a name text field.  */
     $nameFormItem = new TextFormItem();
-    $nameFormItem->setName('name');
-    $nameFormItem->setLabel('Name');
-    $nameFormItem->setValue($club->getName());
+    $nameFormItem
+        ->setName('name')
+        ->setLabel('Name')
+        ->setValue($club->getName());
     $form->addFormItem($nameFormItem);
     
     /* Add a submit button. */

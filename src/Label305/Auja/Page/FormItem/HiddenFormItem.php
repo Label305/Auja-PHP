@@ -21,33 +21,22 @@
  * limitations under the License.
  */
 
-namespace spec\Label305\Auja\Page\FormItem;
+namespace Label305\Auja\Page\FormItem;
 
-set_include_path(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . PATH_SEPARATOR . get_include_path());
-require_once('BaseSpec.php'); // TODO: can this be prettier?
+/**
+ * Represents a hidden input in Auja.
+ *
+ * @author  Thijs Scheepers - <thijs@label305.com>
+ *
+ * @package Label305\Auja\Page\FormItem
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
+class HiddenFormItem extends FormItem {
 
-use Prophecy\Argument;
-use spec\Label305\Auja\BaseSpec;
+    const TYPE = 'hidden';
 
-class FormHeaderSpec extends BaseSpec  {
-
-    function it_is_initializable() {
-        $this->shouldHaveType('Label305\Auja\Page\FormItem\FormHeader');
+    public function getType() {
+        return self::TYPE;
     }
 
-    function it_has_a_header_type(){
-        $this->getType()->shouldBe('header');
-    }
-
-    function it_has_text(){
-        $this->setText('Text');
-        $this->getText()->shouldBe('Text');
-    }
-
-    function it_can_return_basic_serializable_data(){
-        $this->setText('Text');
-
-        $this->basicSerialize()->shouldHaveCount(1);
-        $this->basicSerialize()->shouldHaveKeyValuePair('text', 'Text');
-    }
 }

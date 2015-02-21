@@ -53,9 +53,11 @@ class SpacerMenuItem extends MenuItem {
 
     /**
      * @param String $name The text to display.
+     * @return $this
      */
     public function setText($name) {
         $this->text = $name;
+        return $this;
     }
 
     public function getTypeProperties() {

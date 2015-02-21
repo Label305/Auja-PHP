@@ -62,13 +62,13 @@ class ResourceMenuItemSpec extends BaseSpec {
         ));
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $property = new DummyProperty('target');
         $this->addProperty($property);
 
-        $this->jsonSerialize()->shouldHaveKey('resource');
+        $this->basicSerialize()->shouldHaveKey('resource');
 
-        $data = $this->jsonSerialize()->getWrappedObject();
+        $data = $this->basicSerialize()->getWrappedObject();
         if(!is_array($data['resource']['properties'])) {
             throw new \Exception('properties value is no array');
         }

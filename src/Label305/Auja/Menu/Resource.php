@@ -47,6 +47,11 @@ class Resource extends AujaItem {
      */
     private $nextPageUrl;
 
+    /**
+     * @var String|null The url to get all the items up until the current page, or `null` if none.
+     */
+    private $totalPageUrl;
+
     public function getType() {
         return self::TYPE;
     }
@@ -55,6 +60,7 @@ class Resource extends AujaItem {
      * Adds a `MenuItem`, which contains a database entry.
      *
      * @param MenuItem $item The item to add. Must not be a `ResourceMenuItem`.
+     * @return $this
      */
     public function addItem(MenuItem $item) {
         if($item instanceof ResourceMenuItem){
@@ -62,6 +68,8 @@ class Resource extends AujaItem {
         }
 
         $this->items[] = $item;
+
+        return $this;
     }
 
     /**
@@ -73,9 +81,11 @@ class Resource extends AujaItem {
 
     /**
      * @param String|null $nextPageUrl The url to the next set of items, or `null` if none.
+     * @return $this
      */
     public function setNextPageUrl($nextPageUrl) {
         $this->nextPageUrl = $nextPageUrl;
+        return $this;
     }
 
     /**
@@ -85,11 +95,30 @@ class Resource extends AujaItem {
         return $this->nextPageUrl;
     }
 
-    public function jsonSerialize() {
+        /**
+     * @param String|null $nextPageUrl The url to the next set of items, or `null` if none.
+     * @return $this
+     */
+    public function setTotalPageUrl($totalPageUrl) {
+        $this->totalPageUrl = $totalPageUrl;
+        return $this;
+    }
+
+    /**
+     * @return String The url to the next set of items, or `null` if none.
+     */
+    public function getTotalPageUrl() {
+        return $this->totalPageUrl;
+    }
+
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
         $result = array();
 
         foreach ($this->items as $item) {
-            $result[] = $item->jsonSerialize();
+            $result[] = $item->basicSerialize();
         }
 
         return $result;
@@ -104,11 +133,16 @@ class Resource extends AujaItem {
         $result = array();
 
         $result['type'] = $this->getType();
-        $result[$this->getType()] = $this->jsonSerialize();
+        $result[$this->getType()] = $this->basicSerialize();
 
-        if ($this->nextPageUrl != null) {
+        if ($this->nextPageUrl != null || $this->totalPageUrl != null) {
             $result['paging'] = array();
-            $result['paging']['next'] = $this->nextPageUrl;
+            if ($this->nextPageUrl != null) {
+                $result['paging']['next'] = $this->nextPageUrl;
+            }
+            if ($this->totalPageUrl != null) {
+                $result['paging']['total'] = $this->totalPageUrl;
+            }
         }
 
         return $result;

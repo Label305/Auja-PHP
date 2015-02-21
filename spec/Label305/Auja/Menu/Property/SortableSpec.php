@@ -21,47 +21,41 @@
  * limitations under the License.
  */
 
-namespace spec\Label305\Auja\Page\FormItem;
+namespace spec\Label305\Auja\Menu\Property;
 
-set_include_path(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . PATH_SEPARATOR . get_include_path());
+set_include_path(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.PATH_SEPARATOR.get_include_path());
 require_once('BaseSpec.php'); // TODO: can this be prettier?
 
-use Label305\Auja\Page\FormItem\SelectOption;
 use spec\Label305\Auja\BaseSpec;
 
-class SelectOptionSpec extends BaseSpec {
+class SortableSpec extends BaseSpec {
 
-    const LABEL = 'label';
-
-    const VALUE = 'value';
+    const TARGET = 'target';
 
     function let() {
-        $this->beConstructedWith(self::LABEL, self::VALUE);
+        $this->beConstructedWith(self::TARGET);
     }
 
     function it_is_initializable() {
-        $this->shouldHaveType('Label305\Auja\Page\FormItem\SelectOption');
+        $this->shouldHaveType('Label305\Auja\AujaItem');
+        $this->shouldHaveType('Label305\Auja\Menu\Property\Property');
+        $this->shouldHaveType('Label305\Auja\Menu\Property\Sortable');
     }
 
-    function it_has_no_type() {
-        $this->getType()->shouldBeNull();
+    function its_type_is_sortable() {
+        $this->getType()->shouldBe('sortable');
     }
 
-    function it_has_a_label() {
-        $this->getLabel()->shouldBe(self::LABEL);
-        $this->setLabel('new label');
-        $this->getLabel()->shouldBe('new label');
+    function it_accepts_a_valid_target() {
+        $this->getTarget()->shouldBe(self::TARGET);
+        $this->setTarget(self::TARGET);
+        $this->getTarget()->shouldBe(self::TARGET);
     }
 
-    function it_has_a_value() {
-        $this->getValue()->shouldBe(self::VALUE);
-        $this->setValue('new value');
-        $this->getValue()->shouldBe('new value');
+    function it_returns_the_target_when_json_serialized() {
+        $data = $this->basicSerialize()->getWrappedObject();
+        if(!isset($data['sortable']['target']) || $data['sortable']['target'] != self::TARGET) {
+            throw new \Exception('Invalid target');
+        }
     }
-
-    function it_can_return_basic_serializable_data() {
-        $this->basicSerialize()->shouldContain('label');
-        $this->basicSerialize()->shouldContain('value');
-    }
-
 }

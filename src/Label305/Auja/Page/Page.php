@@ -52,8 +52,9 @@ class Page extends AujaItem {
      * Adds a `PageComponent` to this `Page`.
      *
      * @param PageComponent $pageComponent The `PageComponent` to add.
-     * @param int           $position      The position in the page the `PageComponent` should have.
+     * @param int $position The position in the page the `PageComponent` should have.
      *                                     If not set, it is appended to the end.
+     * @return $this
      */
     public function addPageComponent(PageComponent $pageComponent, $position = -1) {
         if (!is_int($position)) {
@@ -65,6 +66,8 @@ class Page extends AujaItem {
         }
 
         Utils::array_insert($this->pageComponents, $pageComponent, $position);
+
+        return $this;
     }
 
     /**
@@ -74,7 +77,10 @@ class Page extends AujaItem {
         return $this->pageComponents;
     }
 
-    function jsonSerialize() {
+    /**
+     * @return array
+     */
+    function basicSerialize() {
         $result = array();
 
         foreach ($this->pageComponents as $pageComponent) {

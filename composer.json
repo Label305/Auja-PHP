@@ -1,9 +1,9 @@
 {
     "name": "label305/auja",
     "type": "library",
-    "description": "A PHP library for Auja - A back end interface for end users and developers",
-    "keywords": ["Auja", "back end"],
-    "homepage": "http://www.label305.com",
+    "description": "A web service development kit for communicating with the Auja javascript frontend. Auja is an easy-to-use, easy-to-implement admin interface for managing your data.",
+    "keywords": ["Auja", "PHP", "Admin"],
+    "homepage": "http://label305.github.io/Auja",
     "license": "Apache-2.0",
     "authors": [
         {

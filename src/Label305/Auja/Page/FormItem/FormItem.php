@@ -65,9 +65,11 @@ abstract class FormItem extends AujaItem {
 
     /**
      * @param String $name The name of the item.
+     * @return $this
      */
     public function setName($name) {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -79,9 +81,11 @@ abstract class FormItem extends AujaItem {
 
     /**
      * @param String $label The human readable name of the item.
+     * @return $this
      */
     public function setLabel($label) {
         $this->label = $label;
+        return $this;
     }
 
     /**
@@ -93,26 +97,33 @@ abstract class FormItem extends AujaItem {
 
     /**
      * @param mixed $value The value of the item.
+     * @return $this
      */
     public function setValue($value) {
         $this->value = $value;
+        return $this;
     }
 
     /**
      * @param bool $required Whether the property this item represents is required.
+     * @return $this
      */
     public function setRequired($required) {
         $this->required = $required;
+        return $this;
     }
 
     /**
      * @return bool Whether the property this item represents is required.
      */
-    public function isRequired(){
+    public function isRequired() {
         return $this->required;
     }
 
-    public function jsonSerialize() {
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
         $result = array();
 
         $result['name'] = $this->name;
@@ -123,4 +134,4 @@ abstract class FormItem extends AujaItem {
         return $result;
     }
 
-} 
+}

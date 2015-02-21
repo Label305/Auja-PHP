@@ -67,9 +67,11 @@ class SelectOption extends AujaItem {
 
     /**
      * @param String $label The label to show.
+     * @return $this
      */
     public function setLabel($label) {
         $this->label = $label;
+        return $this;
     }
 
     /**
@@ -81,12 +83,17 @@ class SelectOption extends AujaItem {
 
     /**
      * @param mixed $value The value of the option when selected.
+     * @return $this
      */
     public function setValue($value) {
         $this->value = $value;
+        return $this;
     }
 
-    public function jsonSerialize() {
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
         $result = [];
 
         $result['label'] = $this->label;

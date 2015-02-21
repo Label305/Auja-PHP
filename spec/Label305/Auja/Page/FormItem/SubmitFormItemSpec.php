@@ -46,7 +46,7 @@ class SubmitFormItemSpec extends BaseSpec {
     function it_can_return_jsonSerializable_data() {
         $this->setText('Text');
 
-        $this->jsonSerialize()->shouldHaveKeyValuePair(
+        $this->basicSerialize()->shouldHaveKeyValuePair(
             'text', 'Text'
         );
     }

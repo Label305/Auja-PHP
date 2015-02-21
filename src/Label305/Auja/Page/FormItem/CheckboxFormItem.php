@@ -57,13 +57,18 @@ class CheckboxFormItem extends FormItem {
 
     /**
      * @param boolean $checked The checked status of the checkbox.
+     * @return $this
      */
     public function setChecked($checked) {
         $this->checked = $checked;
+        return $this;
     }
 
-    public function jsonSerialize() {
-        $result = parent::jsonSerialize();
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
+        $result = parent::basicSerialize();
 
         $result['checked'] = $this->checked;
 

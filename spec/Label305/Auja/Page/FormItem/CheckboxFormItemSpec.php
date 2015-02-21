@@ -44,10 +44,10 @@ class CheckboxFormItemSpec extends BaseSpec {
         $this->isChecked()->shouldBe(true);
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $this->setChecked(true);
 
-        $this->jsonSerialize()->shouldHaveCount(5);
-        $this->jsonSerialize()->shouldHaveKeyValuePair('value', true);
+        $this->basicSerialize()->shouldHaveCount(5);
+        $this->basicSerialize()->shouldHaveKeyValuePair('value', true);
     }
 }

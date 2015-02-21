@@ -33,18 +33,18 @@ class MessageSpec extends BaseSpec {
         $this->isAuthenticated()->shouldBe(true);
     }
 
-    function it_can_return_json_serializable_data() {
+    function it_can_return_basic_serializable_data() {
         $this->setState('info');
         $this->setContents('contents');
         $this->setAuthenticated(true);
-        $this->jsonSerialize()->shouldHaveKeys(array(
+        $this->basicSerialize()->shouldHaveKeys(array(
             'state',
             'contents',
             'authenticated'
         ));
     }
 
-    function it_can_return_empty_json_serializable_data() {
-        $this->jsonSerialize()->shouldBeArray();
+    function it_can_return_empty_basic_serializable_data() {
+        $this->basicSerialize()->shouldBeArray();
     }
 }

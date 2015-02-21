@@ -99,9 +99,11 @@ class Main extends AujaItem {
 
     /**
      * @param String $title The title.
+     * @return $this
      */
     public function setTitle($title) {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -113,9 +115,11 @@ class Main extends AujaItem {
 
     /**
      * @param bool $authenticated Whether the user is authenticated.
+     * @return $this
      */
     public function setAuthenticated($authenticated) {
         $this->authenticated = $authenticated;
+        return $this;
     }
 
     /**
@@ -127,9 +131,11 @@ class Main extends AujaItem {
 
     /**
      * @param bool $debug Whether to activate debug mode.
+     * @return $this
      */
     public function setDebug($debug) {
         $this->debug = $debug;
+        return $this;
     }
 
     /**
@@ -144,9 +150,11 @@ class Main extends AujaItem {
      *
      * @param $category String The category. See the COLOR constants in this class for the categories.
      * @param $color    String The hexadecimal color value, e.g. '#FF0000'.
+     * @return $this
      */
     public function setColor($category, $color) {
         $this->colors[$category] = $color;
+        return $this;
     }
 
     /**
@@ -158,9 +166,11 @@ class Main extends AujaItem {
 
     /**
      * @param String $username The username.
+     * @return $this
      */
     public function setUsername($username) {
         $this->username = $username;
+        return $this;
     }
 
     /**
@@ -172,16 +182,20 @@ class Main extends AujaItem {
 
     /**
      * @param Button $button The Button to add.
+     * @return $this
      */
     public function addButton(Button $button) {
         $this->buttons[] = $button;
+        return $this;
     }
 
     /**
      * @param Item $item The Item to add.
+     * @return $this
      */
     public function addItem(Item $item) {
         $this->items[] = $item;
+        return $this;
     }
 
     /**
@@ -207,12 +221,17 @@ class Main extends AujaItem {
 
     /**
      * @param Form|null $authentication The authentication `Form` to use, or `null` if none.
+     * @return $this
      */
     public function setAuthenticationForm($authentication) {
         $this->authentication = $authentication;
+        return $this;
     }
 
-    public function jsonSerialize() {
+    /**
+     * @return array
+     */
+    public function basicSerialize() {
         $result = array();
 
         $result['title'] = $this->getTitle();
@@ -223,12 +242,12 @@ class Main extends AujaItem {
 
         $result['buttons'] = array();
         foreach ($this->getButtons() as $button) {
-            $result['buttons'][] = $button->jsonSerialize();
+            $result['buttons'][] = $button->basicSerialize();
         }
 
         $result['menu'] = array();
         foreach ($this->getItems() as $item) {
-            $result['menu'][] = $item->jsonSerialize();
+            $result['menu'][] = $item->basicSerialize();
         }
 
         if ($this->getAuthenticationForm() != null) {

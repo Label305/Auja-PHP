@@ -54,7 +54,7 @@ class FileSelectFormItem extends FormItem {
         $result['target'] = $this->getTarget();
 
         if (count($this->getFiles()) > 0) {
-            $result['file'] = $this->getFiles()[0];
+            $result['file'] = $this->getFiles()[0]->basicSerialize();
         }
 
         return $result;

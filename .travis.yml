@@ -1,23 +1,24 @@
 language: php
-
-php: [5.4, 5.5, hhvm]
-
+php:
+- 5.4
+- 5.5
+- hhvm
 before_install:
-  # Remove code coverage in hhvm
-  - if [[ $TRAVIS_PHP_VERSION == 'hhvm' ]]; then sed -i "s/ - PhpSpec\\\Extension\\\CodeCoverageExtension//" phpspec.yml ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 'hhvm' ]]; then composer remove henrikbjorn/phpspec-code-coverage satooshi/php-coveralls --dev --no-update ; fi
-
+- if [[ $TRAVIS_PHP_VERSION == 'hhvm' ]]; then sed -i "s/ - PhpSpec\\\Extension\\\CodeCoverageExtension//"
+  phpspec.yml ; fi
+- if [[ $TRAVIS_PHP_VERSION == 'hhvm' ]]; then composer remove henrikbjorn/phpspec-code-coverage
+  satooshi/php-coveralls --dev --no-update ; fi
 install:
-  - composer update --dev
-
+- composer update --dev
 script:
-  - bin/phpspec run --format=pretty
-  - if [[ $TRAVIS_PHP_VERSION != 'hhvm' ]]; then bin/coveralls -v ; fi
-
+- bin/phpspec run --format=pretty
+- if [[ $TRAVIS_PHP_VERSION != 'hhvm' ]]; then bin/coveralls -v ; fi
 notifications:
-  - email:
+  matrix:
+  - email: 
     on_success: change
     on_failure: change
-
+  slack:
+    secure: LcSCyMzk3gbIDz/AyoycwBjKNUljd0FAEiikUzK2F78xbsaLC+vSRv8OPrIFvPfUSmjhsNvUkZVTRI3I1UeU9y8M9q7H4anI3OD5gSmEc6AsHqPuCniAOwSkjPIUMlEq4/Frnp0bpwKCBHekfzto30osbpVqJDSOcEEQ4CCj6wg=
 matrix:
   fast_finish: true

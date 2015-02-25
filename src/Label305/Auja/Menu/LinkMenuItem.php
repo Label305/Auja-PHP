@@ -110,9 +110,36 @@ class LinkMenuItem extends MenuItem {
 
         $result['text'] = $this->text;
         $result['target'] = $this->target;
+
+        if ($this->external !== null) {
+            $result['external'] = $this->isExternal();
+        }
+
         $result['icon'] = $this->icon;
 
         return $result;
     }
 
+    /**
+     * @var boolean
+     */
+    private $external;
+
+    /**
+     * @param boolean $external
+     * @return $this
+     */
+    public function setExternal($external)
+    {
+        $this->external = $external;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isExternal()
+    {
+        return $this->external === true;
+    }
 }

@@ -49,14 +49,21 @@ class MenuItemSpec extends BaseSpec {
         $this->getOrder()->shouldBe(2);
     }
 
+    function it_could_be_external() {
+        $this->beAnInstanceOf('Label305\Auja\Menu\LinkMenuItem');
+
+        $this->setExternal(true);
+        $this->isExternal()->shouldBe(true);
+    }
+
     function it_can_return_basic_serializable_data() {
         $this->beAnInstanceOf('Label305\Auja\Menu\LinkMenuItem');
 
-        $this->basicSerialize()->shouldHaveKeys(array(
+        $this->basicSerialize()->shouldHaveKeys([
             'type',
             'order',
             'link'
-        ));
+        ]);
     }
 
 }

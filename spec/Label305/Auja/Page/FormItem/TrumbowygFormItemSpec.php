@@ -76,7 +76,7 @@ class TrumbowygFormItemSpec extends BaseSpec {
         $data = $result->getWrappedObject();
         
         if(array_key_exists('buttons', $data)) {
-            throw new \Exception('buttons in serialized data while none specified');
+            throw new Exception('buttons in serialized data while none specified');
         }
     }
 }

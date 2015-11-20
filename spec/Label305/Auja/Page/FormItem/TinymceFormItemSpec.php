@@ -38,4 +38,16 @@ class TinymceFormItemSpec extends BaseSpec {
         $this->getType()->shouldBe('tinymce');
     }
 
+    function it_can_have_an_uploader()
+    {
+        $this->setHasUploader(true);
+        $this->getHasUploader()->shouldBe(true);
+    }
+
+    function it_should_have_an_upload_target()
+    {
+        $this->setUploadTarget('/downloads/upload');
+        $this->getUploadTarget()->shouldBe('/downloads/upload');
+    }
+
 }

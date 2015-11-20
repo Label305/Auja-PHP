@@ -38,4 +38,52 @@ class TinymceFormItem extends FormItem {
     public function getType() {
         return self::TYPE;
     }
+
+    /**
+     * @var Boolean
+     */
+    private $hasUploader;
+
+    /**
+     * @var String Target URL for uploading request
+     */
+    private $uploadTarget;
+
+    /**
+     * @return String
+     */
+    public function getHasUploader()
+    {
+        return $this->hasUploader;
+    }
+
+    /**
+     * @param String $hasUploader
+     * @return $this
+     */
+    public function setHasUploader($hasUploader)
+    {
+        $this->hasUploader = $hasUploader;
+        return $this;
+    }
+
+    /**
+     * @return String
+     */
+    public function getUploadTarget()
+    {
+        return $this->uploadTarget;
+    }
+
+    /**
+     * @param String $uploadTarget
+     * @return $this
+     */
+    public function setUploadTarget($uploadTarget)
+    {
+        $this->uploadTarget = $uploadTarget;
+        return $this;
+    }
+
+
 }

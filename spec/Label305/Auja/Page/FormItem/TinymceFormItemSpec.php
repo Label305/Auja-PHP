@@ -44,10 +44,10 @@ class TinymceFormItemSpec extends BaseSpec {
         $this->hasUploader()->shouldBe(true);
     }
 
-    function it_should_have_an_upload_target()
+    function it_should_have_a_target()
     {
-        $this->setUploadTarget('/downloads/upload');
-        $this->getUploadTarget()->shouldBe('/downloads/upload');
+        $this->setTarget('/downloads/upload');
+        $this->getTarget()->shouldBe('/downloads/upload');
     }
 
 }

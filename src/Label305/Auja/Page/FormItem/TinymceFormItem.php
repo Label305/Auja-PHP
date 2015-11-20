@@ -42,46 +42,60 @@ class TinymceFormItem extends FormItem {
     /**
      * @var Boolean
      */
-    private $hasUploader;
+    private $uploader;
 
     /**
      * @var String Target URL for uploading request
      */
-    private $uploadTarget;
+    private $target;
+
+    /**
+     * @return array
+     */
+    public function basicSerialize()
+    {
+        $result = array();
+
+        $result['name'] = $this->getName();
+        $result['label'] = $this->getLabel();
+        $result['uploader'] = $this->hasUploader();
+        $result['target'] = $this->getTarget();
+        return $result;
+    }
 
     /**
      * @return String
      */
-    public function getHasUploader()
+    public function hasUploader()
     {
-        return $this->hasUploader;
+        return $this->uploader;
     }
 
     /**
      * @param String $hasUploader
      * @return $this
      */
-    public function setHasUploader($hasUploader)
+    public function setUploader($hasUploader)
     {
-        $this->hasUploader = $hasUploader;
+        $this->uploader = $hasUploader;
         return $this;
     }
 
     /**
      * @return String
      */
-    public function getUploadTarget()
+    public function getTarget()
     {
-        return $this->uploadTarget;
+        return $this->target;
     }
 
     /**
-     * @param String $uploadTarget
+     * @param String $target
      * @return $this
      */
-    public function setUploadTarget($uploadTarget)
+    public function setTarget($target)
     {
-        $this->uploadTarget = $uploadTarget;
+        $this->target = $target;
         return $this;
     }
 

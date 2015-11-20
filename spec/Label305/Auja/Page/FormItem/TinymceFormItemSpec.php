@@ -40,8 +40,8 @@ class TinymceFormItemSpec extends BaseSpec {
 
     function it_can_have_an_uploader()
     {
-        $this->setHasUploader(true);
-        $this->getHasUploader()->shouldBe(true);
+        $this->setUploader(true);
+        $this->hasUploader()->shouldBe(true);
     }
 
     function it_should_have_an_upload_target()

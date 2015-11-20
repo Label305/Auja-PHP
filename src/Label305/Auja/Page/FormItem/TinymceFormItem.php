@@ -58,6 +58,7 @@ class TinymceFormItem extends FormItem {
 
         $result['name'] = $this->getName();
         $result['label'] = $this->getLabel();
+        $result['value'] = $this->getValue();
         $result['uploader'] = $this->hasUploader();
         $result['target'] = $this->getTarget();
         return $result;

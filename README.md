@@ -1,6 +1,12 @@
 Auja PHP Development Kit
 ==============
 
+__Deprecated__
+
+This repo will no longer be maintained and will be deleted in the start of 2017.
+
+__About__
+
 [![Build Status](https://travis-ci.org/Label305/Auja-PHP.svg?branch=master)](https://travis-ci.org/Label305/Auja-PHP)
 [![Coverage Status](https://coveralls.io/repos/Label305/Auja-PHP/badge.png?branch=master)](https://coveralls.io/r/Label305/Auja-PHP?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/54899173746eb519300002eb/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54899173746eb519300002eb)
